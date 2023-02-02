@@ -8,7 +8,7 @@ realTime.addEventListener('change', (e) => {
 });
 
 const AP = `
-  <img src="./images/aproved.png" alt="Celebracion" class="scale-in-center" />
+  <img src="./images/approved.png" alt="Celebracion" class="scale-in-center" />
   <span class="scale-in-center">Felicitaciones!<br />Aprobaste</span>
   <p id="promedio" class="scale-in-center">0</p>
   <p class="scale-in-center">Nota final</p>
@@ -24,7 +24,7 @@ const RP = `
 `;
 
 const getValue = (id) => {
-  return parseInt(document.getElementById(id).value);
+  return parseInt(document.getElementById(id).value) || 0;
 };
 
 const getFormInputs = () => {
@@ -119,11 +119,29 @@ for (let input of numberInputs) {
     if (e.target.value > 100) {
       e.target.value = 100;
     }
-    if (e.target.value < 0 || e.target.value === '' || e.target.value === 'e') {
-      e.target.value = 0;
+    if (
+      e.target.value < 0 ||
+      e.target.value === 'e' ||
+      e.target.value.includes('.')
+    ) {
+      e.target.value = '';
     }
     if (hotReloading) {
       showResults();
     }
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === '.') {
+      e.preventDefault();
+    }
+  });
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker
+      .register('/serviceWorker.js')
+      .then((res) => console.log('service worker registered'))
+      .catch((err) => console.log('service worker not registered', err));
   });
 }

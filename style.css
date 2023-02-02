@@ -1,11 +1,10 @@
 :root {
   --mainColor: #3080d0;
   --secColor: #000;
-  --backColor: #fff;
+  --backColor: rgb(246, 246, 246);
   --textColor: #404244;
   --labelColor: #686869;
   --dangerColor: #ff6384;
-  --footerTextColor: #fff;
 }
 
 body {
@@ -15,6 +14,7 @@ body {
   padding: 0;
   font-size: 16px;
   min-height: 100vh;
+  background: var(--backColor);
 }
 
 .content {
@@ -38,7 +38,7 @@ header {
   z-index: 20;
   right: 0;
   height: 4.25rem;
-  background-color: #fff;
+  background-color: var(--backColor);
   box-sizing: border-box;
   border-bottom: 1px solid #eaecef;
 }
@@ -106,7 +106,7 @@ nav a:hover {
 footer {
   display: flex;
   justify-content: center;
-  color: var(--footerTextColor);
+  color: var(--backColor);
   background: var(--secColor);
 }
 
@@ -158,6 +158,7 @@ main {
 
 main h1 {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .content_section {
@@ -173,11 +174,11 @@ main h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: 100%;
 }
 
 .results_section img {
-  width: 300px;
+  width: 200px;
 }
 
 .results_section span {
@@ -197,7 +198,7 @@ main h1 {
 .form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 100%;
   gap: 20px;
 }
 
@@ -210,24 +211,24 @@ main h1 {
   padding: 10px;
   border-radius: 5px;
   font-size: 2rem;
-  border: solid 1px var(--secColor);
+  border: solid 1px #40424454;
+  margin-top: 5px;
 }
 
 .form__button {
   padding: 10px 20px;
   font-size: 2rem;
   border-radius: 5px;
-  border: solid 1px var(--secColor);
-  background: var(--backColor);
-  color: var(--textColor);
+  border: solid 1px var(--textColor);
+  background: var(--textColor);
+  color: var(--backColor);
 }
 
 .form__button:hover,
 .form__button:focus {
   cursor: pointer;
-  border: solid 1px var(--secColor);
-  background: var(--textColor);
-  color: var(--backColor);
+  border: solid 1px var(--mainColor);
+  background: var(--mainColor);
 }
 
 .realtime {
@@ -242,6 +243,14 @@ main h1 {
   padding: 10px;
 }
 
+.mobile-hidden {
+  display: none;
+}
+
+.calculator_section {
+  width: 100%;
+}
+
 /* RESPONSIVE */
 @media (min-width: 1440px) {
   .content {
@@ -250,9 +259,19 @@ main h1 {
 }
 
 @media (min-width: 1000px) {
+  .results_section img {
+    width: 300px;
+  }
   .content_section {
     flex-direction: row;
     justify-content: space-between;
+  }
+  .results_section,
+  .calculator_section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .footer_up_section {
     display: flex;
@@ -267,6 +286,15 @@ main h1 {
 
   #social_section {
     width: 20%;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 20px;
+  }
+  .mobile-hidden {
+    display: block;
   }
 }
 
@@ -309,11 +337,11 @@ main h1 {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--mainColor);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--mainColor);
 }
 
 input:checked + .slider:before {

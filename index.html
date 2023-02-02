@@ -1,7 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <link rel="canonical" href="https://javiervmc.com/" />
+    <meta
+      name="description"
+      content="Calculadora de promedio para estudiantes de la ESPOL"
+    />
+    <meta
+      name="keywords"
+      content="Calculadora de promedio ESPOL, Calculadora, Promedio, Espol, Calculadora espol, Calculadora de promedio espol, Calculadora promedio espol"
+    />
+    <meta name="author" content="Javier Vega" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="images/icons/72.png" />
+    <link rel="apple-touch-icon" href="images/icons/92.png" />
+    <link rel="apple-touch-icon" href="images/icons/128.png" />
+    <link rel="apple-touch-icon" href="images/icons/144.png" />
+    <link rel="apple-touch-icon" href="images/icons/152.png" />
+    <link rel="apple-touch-icon" href="images/icons/196.png" />
+    <link rel="apple-touch-icon" href="images/icons/256.png" />
+    <link rel="apple-touch-icon" href="images/icons/512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#404244" />
+    <meta name="theme-color" content="#404244" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -9,7 +31,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="./index.js" defer></script>
+    <script src="./index.js" defer content-type="text/javascript"></script>
     <title>Calculadora de promedio ESPOL</title>
   </head>
   <body>
@@ -18,7 +40,7 @@
         <div id="logo_container">
           <img src="./images/logoESPOL.svg" alt="Logo de Espol" />
         </div>
-        <nav>
+        <nav class="mobile-hidden">
           <ul>
             <li><a href="#">Calculadora</a></li>
           </ul>
@@ -29,8 +51,13 @@
       <h1>Calculadora de promedio ESPOL</h1>
       <div class="realtime">
         <span>Calcular en tiempo real</span>
-        <label class="switch">
-          <input type="checkbox" id="realtime" />
+        <label class="switch" for="realtime">
+          <input
+            type="checkbox"
+            id="realtime"
+            name="realtime"
+            placeholder="Click para activar o descativar el calculo en tiempo real"
+          />
           <span class="slider round"></span>
         </label>
       </div>
@@ -47,6 +74,8 @@
                 max="100"
                 value="0"
                 class="form__field__input"
+                placeholder="ej: 30"
+                maxlength="3"
               />
             </div>
             <div class="form__field">
@@ -59,6 +88,8 @@
                 max="100"
                 value="0"
                 class="form__field__input"
+                placeholder="ej: 80"
+                maxlength="3"
               />
             </div>
             <div class="form__field">
@@ -71,6 +102,8 @@
                 max="100"
                 value="0"
                 class="form__field__input"
+                placeholder="ej: 80"
+                maxlength="3"
               />
             </div>
             <div class="form__field">
@@ -83,6 +116,8 @@
                 max="100"
                 value="0"
                 class="form__field__input"
+                placeholder="ej: 80"
+                maxlength="3"
               />
             </div>
             <div class="form__field">
@@ -95,6 +130,8 @@
                 max="100"
                 value="0"
                 class="form__field__input"
+                placeholder="ej: 80"
+                maxlength="3"
               />
             </div>
             <button type="submit" class="form__button">Calcular</button>
