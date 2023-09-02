@@ -1,0 +1,121 @@
+.section {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.formTable {
+  width: 100%;
+}
+
+.formTable__buttonContainer {
+  width: 100%;
+  display: flex;
+}
+
+.formTable__table {
+  width: auto;
+  line-height: 1.4;
+  border-collapse: collapse;
+  margin: 5px 0;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.formTable__thead {
+  color: #fff;
+}
+
+.formTable__th {
+  background: var(--textColor);
+  font-weight: normal;
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 1rem;
+}
+
+.formTable__td {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.formTable__td-small {
+  width: 10%;
+}
+
+.formTable__tr {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px;
+  position: relative;
+}
+
+.formTable__tr:hover {
+  background: #dddddd;
+  cursor: pointer;
+}
+
+.formTable__td.gpa {
+  padding: 12px 15px;
+  /* background: #dcebfa; */
+}
+
+.formTable__tr:nth-of-type(even) {
+  background-color: #ebebeb;
+}
+
+.formTable__tr:nth-of-type(even):hover {
+  background: #dddddd;
+}
+
+.formTable__tr:last-of-type {
+  border-bottom: 2px solid var(--textColor);
+}
+
+.formTable__td.optionsTd {
+  background: transparent;
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.formTable__td.button--delete {
+  height: 50%;
+}
+
+.formTable__td.editTd {
+  background: transparent;
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.formTable__td.button--edit {
+  height: 50%;
+}
+
+#globalGPA {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .formTable__td.deleteTd {
+    right: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formTable__td.deleteTd {
+    right: -40px;
+  }
+
+  .formTable__table {
+    min-width: auto;
+    max-width: 80%;
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "Calculadora de promedio ESPOL",
   "short_name": "Promedio ESPOL",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#404244",
@@ -45,7 +45,13 @@
     {
       "src": "/images/icons/512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     }
-  ]
+  ],
+  "lang": "es",
+  "scope": "/",
+  "categories": ["education", "productivity"],
+  "description": "Calculadora de promedio para estudiantes de la ESPOL",
+  "id": "calculadora-promedio-espol-javier-vega"
 }
