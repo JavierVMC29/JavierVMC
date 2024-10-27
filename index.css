@@ -172,6 +172,10 @@ footer {
   background: var(--secColor);
 }
 
+a.social-link {
+  color: transparent;
+}
+
 .footer_content {
   display: flex;
   flex-direction: column;
