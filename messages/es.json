@@ -1,0 +1,213 @@
+{
+  "Languages": {
+    "name": "Idiomas"
+  },
+  "SocialMedia": {
+    "LinkedIn": {
+      "href": "https://www.linkedin.com/in/javier-vega-molina/"
+    },
+    "Email": {
+      "href": "mailto:javiervegamolina29@gmail.com",
+      "name": "javiervegamolina29@gmail.com"
+    }
+  },
+  "HomePath": {
+    "path": "/es"
+  },
+  "HeaderItems": {
+    "About": {
+      "name": "SOBRE",
+      "path": "/es/about"
+    },
+    "Experience": {
+      "name": "EXPERIENCIA",
+      "path": "/es/experience"
+    },
+    "Projects": {
+      "name": "PROYECTOS",
+      "path": "/es/projects"
+    },
+    "Contact": {
+      "name": "CONTACTO",
+      "path": "/es/contact"
+    }
+  },
+  "Footer": {
+    "copyright": "2025 Javier Vega Molina - Todos los Derechos Reservados"
+  },
+  "HomePage": {
+    "Hero": {
+      "title": "¡Hola! Soy Javier Vega Molina",
+      "content": "Desarrollador de Software con experiencia en la construcción de aplicaciones escalables y modernas",
+      "CTAs": {
+        "Projects": {
+          "name": "Proyectos",
+          "path": "/es/projects"
+        },
+        "Contact": {
+          "name": "Contacto",
+          "path": "/es/contact"
+        }
+      }
+    },
+    "Skills": {
+      "title": "Servicios y Habilidades",
+      "content": "Ofrezco servicios para la construcción y mantenimiento de sitios web, optimización de la presencia digital de tu negocio y alojamiento de sitios con correo electrónico profesional y dominios personalizados",
+      "FrontEnd": {
+        "title": "Desarrollo Frontend",
+        "content": "Construcción de interfaces completas, modernas y responsivas para todo tipo de dispositivos."
+      },
+      "BackEnd": {
+        "title": "Desarrollo Backend",
+        "content": "Construcción de sistemas seguros, escalables y de alto rendimiento, desarrollo de APIs, integraciones con bases de datos, microservicios, cron-jobs e Inteligencia Artificial (IA)."
+      },
+      "Maintenance": {
+        "title": "Mantenimiento & Monitoreo",
+        "content": "Corrección de errores, soporte técnico, monitoreo del rendimiento de la aplicación y desarrollo de nuevas funcionalidades que atiendan las necesidades de los clientes."
+      },
+      "SoftwareTest": {
+        "title": "Pruebas de Software",
+        "content": "Pruebas End-to-End, pruebas unitarias y construcción de escenarios de alta demanda de solicitudes (Pruebas de Carga)."
+      },
+      "PerformanceDigitalPresence": {
+        "title": "Performance & Presencia Digital",
+        "content": "Optimización de la velocidad y visibilidad en páginas de búsqueda, SEO, campañas de marketing y captura de leads."
+      },
+      "WebHosting": {
+        "title": "Alojamiento Web",
+        "content": "Alojamiento de sitios, configuración de dominio y subdominios, creación de correo electrónico profesional."
+      }
+    }
+  },
+  "About": {
+    "title": "Sobre",
+    "content": "Conoce más sobre mi perfil y habilidades",
+    "MainInfo": {
+      "title": "Sobre mí",
+      "content_1": "Soy Javier Vega, Ingeniero de Software y Licenciado en Ingeniería Informática por la ESPOL en Ecuador. Cuento con 5 años de experiencia práctica en tecnología y programación, con 3 años especializado en Desarrollo de Software.",
+      "content_2": "Mi trayectoria académica me permitió consolidar conocimientos en Algoritmos, Estructura de Datos, Desarrollo de Sistemas y Base de Datos, los cuales aplico en la construcción de sistemas eficientes y modernos. Creo soluciones de impacto utilizando Typescript, NestJs, Next.js, React y Tailwind.",
+      "content_3": "Actualmente trabajo como Desarrollador de Software en Telecu, una empresa de telecomunicaciones, donde mantengo proyectos existentes y construyo nuevas soluciones para nuestros clientes. Mi rol incluye implementar funcionalidades escalables, escribir pruebas y mejorar continuamente la calidad del código para garantizar un rendimiento y fiabilidad óptimos."
+    },
+    "Education": {
+      "title": "Educación",
+      "University": {
+        "title": "Licenciatura en Ciencias de la Computación",
+        "content": "ESPOL - Escuela Superior Politécnica del Litoral",
+        "date": "Mayo 2019 - Marzo 2024",
+        "location": "Ecuador, Guayaquil"
+      },
+      "Bootcamp": {
+        "title": "Maestría en Inteligencia Artificial",
+        "content": "UEES - Universidad de Especialidades Espíritu Santo",
+        "date": "Marzo 2025 - Mayo 2026",
+        "location": "Ecuador, Guayaquil"
+      }
+    },
+    "Skills": {
+      "title": "Habilidades",
+      "Languages": {
+        "title": "Lenguajes"
+      },
+      "Frameworks": {
+        "title": "Frameworks/Bibliotecas"
+      },
+      "Databases": {
+        "title": "Base de Datos"
+      },
+      "Microservices": {
+        "title": "Microservicios/DevOps"
+      },
+      "Tests": {
+        "title": "Pruebas de Software"
+      }
+    },
+    "Concepts": {
+      "title": "Conceptos",
+      "content_1": "Estructura de Datos",
+      "content_2": "Diseño y Análisis de Algoritmos",
+      "content_3": "Inteligencia Artificial",
+      "content_4": "Programación Orientada a Objetos",
+      "content_5": "Redes de Computadoras",
+      "content_6": "Sistemas Distribuidos",
+      "content_7": "Bases de Datos",
+      "content_8": "Seguridad Informática",
+      "content_9": "Sistemas Operativos",
+      "content_10": "Ingeniería de Software",
+      "content_11": "Interacción Humano-Computadora UI/UX"
+    }
+  },
+  "Experiences": {
+    "title": "Experiencia",
+    "content": "Mi trayectoria profesional en desarrollo de software y programación",
+    "Experience_1": {
+      "date": "Septiembre 2023 - Actualidad",
+      "icon": "Work",
+      "title": "Desarrollador Full-Stack",
+      "subtitle": "Telecu",
+      "content_1": "Reduje el tiempo de carga de la paginación en un 90% para una tabla con 2 millones de registros utilizando indexación secuencial.",
+      "content_2": "Diseñé un sistema de notificaciones tolerante a fallos mediante un patrón scheduler-supervisor-agent para garantizar el 100% de entrega. (TypeScript, Node.js, Express, RabbitMQ, PostgreSQL)",
+      "content_3": "Automaticé el proceso de registro de vehículos con webhooks y una API de reconocimiento de placas, disminuyendo el tiempo en un 90%.",
+      "content_4": "Stack tecnológico: TypeScript, Node.js, Express, RabbitMQ, PostgreSQL",
+      "html_content": ""
+    },
+    "Experience_2": {
+      "date": "Octubre 2023 - Febrero 2024",
+      "icon": "Work",
+      "title": "Ingeniero de Software",
+      "subtitle": "Prefectura Ciudadana del Guayas",
+      "content_1": "Desarrollé una aplicación móvil de turismo para la provincia del Guayas utilizando React Native y NestJS sobre una arquitectura de microservicios en Azure.",
+      "content_2": "Promoví el turismo en la región, logrando que el 90% de los usuarios se sintiera más motivado a visitarla tras usar la app.",
+      "content_3": "Stack tecnológico: React Native, NestJS, Microservicios, Azure",
+      "html_content": ""
+    },
+    "Experience_3": {
+      "date": "Febrero 2023 - Agosto 2023",
+      "icon": "Work",
+      "title": "Desarrollador Full-Stack",
+      "subtitle": "Sipecom S.A",
+      "content_1": "Migré una aplicación heredada en PHP 5 a PHP 8.2, corrigiendo vulnerabilidades de seguridad y reteniendo a un cliente que representaba el 60% de los ingresos de la empresa.",
+      "content_2": "Trasladé aplicaciones on-premise a la nube de Azure, reduciendo los costos de mantenimiento de infraestructura en un 70%.",
+      "content_3": "Stack tecnológico: PHP, Azure",
+      "html_content": ""
+    },
+    "Experience_4": {
+      "date": "Mayo 2020 - Octubre 2020",
+      "icon": "Work",
+      "title": "Desarrollador Frontend",
+      "subtitle": "Zede del Litoral",
+      "content_1": "Implementé un nuevo diseño para el sitio web utilizando HTML, CSS y JavaScript, aumentando en un 200% las llamadas de clientes interesados.",
+      "content_2": "Stack tecnológico: HTML, CSS, JavaScript",
+      "html_content": ""
+    }
+  },
+  "Projects": {
+    "title": "Proyectos",
+    "content": "Explora mis proyectos más recientes. Contiene proyectos de trabajo, freelances y proyectos personales",
+
+    "Project_1": {
+      "title": "Calculadora de promedio ESPOL",
+      "description": "Calculadora de Promedio ESPOL es una herramienta sencilla para estimar tu promedio a partir de las calificaciones que ingreses. Ayuda a simular diferentes escenarios y comprender tu desempeño académico. Creada para que los estudiantes de ESPOL calculen su progreso rápido y sin complicaciones.",
+      "tag_1": "Personal"
+    },
+    "Project_2": {
+      "title": "Zentinel Landing Page",
+      "description": "Esta landing page explica paso a paso cómo funciona la plataforma, mostrando sus características clave, beneficios y casos de uso. Incluye secciones que detallan el registro de visitantes, la mejora en la seguridad y la optimización de procesos para comunidades y empresas. Además, presenta capturas, testimonios y un llamado a la acción para que los usuarios empiecen a proteger su espacio hoy mismo.",
+      "tag_1": "Trabajo"
+    },
+    "Project_3": {
+      "title": "Zentinel",
+      "description": "Zentinel es la solución moderna para el control de accesos en todo tipo de instalaciones. Con tecnología inteligente y una interfaz sencilla, permite registrar y gestionar visitas de forma ágil y segura. Mantén tu comunidad, empresa o centro educativo siempre protegido y organizado.",
+      "tag_1": "Trabajo"
+    },
+    "Project_4": {
+      "title": "CallBot AI",
+      "description": "Esta app te permite generar llamadas conversacionales con un bot impulsado por IA generativa. Ofrece interacciones naturales y personalizadas en tiempo real. Es ideal para automatizar atención al cliente, encuestas o asistentes virtuales.",
+      "tag_1": "En progreso",
+      "tag_2": "Trabajo"
+    }
+  },
+  "Contact": {
+    "title": "Contacto",
+    "content": "¿Tienes un proyecto en mente o estás interesado en mis servicios? Ponte en contacto a través de los canales de comunicación"
+  }
+}

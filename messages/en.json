@@ -1,0 +1,212 @@
+{
+  "Languages": {
+    "name": "Languages"
+  },
+  "SocialMedia": {
+    "LinkedIn": {
+      "href": "https://www.linkedin.com/in/javier-vega-molina/"
+    },
+    "Email": {
+      "href": "mailto:javiervegamolina29@gmail.com",
+      "name": "javiervegamolina29@gmail.com"
+    }
+  },
+  "HomePath": {
+    "path": "/en"
+  },
+  "HeaderItems": {
+    "About": {
+      "name": "ABOUT",
+      "path": "/en/about"
+    },
+    "Experience": {
+      "name": "EXPERIENCE",
+      "path": "/en/experience"
+    },
+    "Projects": {
+      "name": "PROJECTS",
+      "path": "/en/projects"
+    },
+    "Contact": {
+      "name": "CONTACT",
+      "path": "/en/contact"
+    }
+  },
+  "Footer": {
+    "copyright": "2025 Javier Vega Molina - All Rights Reserved"
+  },
+  "HomePage": {
+    "Hero": {
+      "title": "Hi! I'm Javier Vega Molina",
+      "content": "Software Developer with experience in creating scalable and modern applications",
+      "CTAs": {
+        "Projects": {
+          "name": "Projects",
+          "path": "/en/projects"
+        },
+        "Contact": {
+          "name": "Contact",
+          "path": "/en/contact"
+        }
+      }
+    },
+    "Skills": {
+      "title": "Services & Skills",
+      "content": "I offer services to create and provide maintenance for websites, optimize digital presence of your business and host your website with business email and custom domains",
+      "FrontEnd": {
+        "title": "Frontend Development",
+        "content": "Building complete, modern and responsive user interfaces for all types of devices."
+      },
+      "BackEnd": {
+        "title": "Backend Development",
+        "content": "Creating secure, scalable and high performance servers, building APIs, database integrations, microservices, Cron-Jobs, Artificial Intelligence (AI)."
+      },
+      "Maintenance": {
+        "title": "Maintenance & Monitoring",
+        "content": "Bug fixes, tech support, application performance monitoring and development of new features that satisfy costumer needs."
+      },
+      "SoftwareTest": {
+        "title": "Software Testing",
+        "content": "End to End & Unit Tests, building high rate requests scenarios (Stress Tests)."
+      },
+      "PerformanceDigitalPresence": {
+        "title": "Performance & Digital Presence",
+        "content": "Optimizing websites for speed and search engines visibility, SEO, marketing campaigns and leads capture."
+      },
+      "WebHosting": {
+        "title": "Web Hosting",
+        "content": "Hosting webistes, domain and subdomain configurations, creating business email."
+      }
+    }
+  },
+  "About": {
+    "title": "About",
+    "content": "Get to know more about my background and skills",
+    "MainInfo": {
+      "title": "About me",
+      "content_1": "I'm Javier Vega, a Software Engineer and Bachelor in Computer Engineering from ESPOL in Ecuador. I have 5 years of hands-on experience in tech and programming, with 3 years specializing in Software Development.",
+      "content_2": "My academic background gave solid knowledge in Algorithms, Data Structures, System Design, Databases which I apply to create efficient and modern systems. I've delivered impactful solutions using Typescript, NestJS, Next.js, React and Tailwind.",
+      "content_3": "I currently work as a Software Developer at Telecu, a telecommunications company, where I maintain existing projects and build new solutions for our clients. My role involves creating scalable features, writing tests, and continuously improving code quality to ensure optimal performance and reliability."
+    },
+    "Education": {
+      "title": "Education",
+      "University": {
+        "title": "Bachelor in Computer Science",
+        "content": "ESPOL - Escuela Superior Politécnica del Litoral",
+        "date": "May 2019 - March 2024",
+        "location": "Ecuador, Guayaquil"
+      },
+      "Bootcamp": {
+        "title": "Master's in Artificial Intelligence",
+        "content": "UEES - Universidad de Especialidades Espíritu Santo",
+        "date": "March 2025 - May 2026",
+        "location": "Ecuador, Guayaquil"
+      }
+    },
+    "Skills": {
+      "title": "Skills",
+      "Languages": {
+        "title": "Languages"
+      },
+      "Frameworks": {
+        "title": "Frameworks/Libraries"
+      },
+      "Databases": {
+        "title": "Databases"
+      },
+      "Microservices": {
+        "title": "Microservices/DevOps"
+      },
+      "Tests": {
+        "title": "Software Testing"
+      }
+    },
+    "Concepts": {
+      "title": "Concepts",
+      "content_1": "Data Structures",
+      "content_2": "Algorithms Design and Analysis",
+      "content_3": "Artificial Intelligence",
+      "content_4": "Object-Oriented Programming",
+      "content_5": "Computer Networks",
+      "content_6": "Distributed Systems",
+      "content_7": "Databases",
+      "content_8": "Computer Security",
+      "content_9": "Operating Systems",
+      "content_10": "Software Engineering",
+      "content_11": "Human-Computer Interation UI/UX"
+    }
+  },
+  "Experiences": {
+    "title": "Experiences",
+    "content": "My professional career in Software Development and programming trajectory",
+    "Experience_1": {
+      "date": "September 2023 - Current",
+      "icon": "Work",
+      "title": "Full-Stack Developer",
+      "subtitle": "Telecu",
+      "content_1": "Reduced pagination loading time by 90% for a table with 2 million records using sequential indexing.",
+      "content_2": "Designed a fault-tolerant notification system using a scheduler-supervisor-agent pattern to ensure 100% notification delivery. (TypeScript, Node.js, Express, RabbitMQ, PostgreSQL)",
+      "content_3": "Automated vehicle registration process with webhooks and a license plate recognition API, cutting registration time by 90%.",
+      "content_4": "Tech stack: TypeScript, Node.js, Express, RabbitMQ, PostgreSQL",
+      "html_content": ""
+    },
+    "Experience_2": {
+      "date": "October 2023 - February 2024",
+      "icon": "Work",
+      "title": "Software Engineer",
+      "subtitle": "Prefectura Ciudadana del Guayas",
+      "content_1": "Developed a tourism mobile application for Guayas province using React Native and NestJS on a microservices architecture hosted on Azure.",
+      "content_2": "Promoted tourism in the region, with 90% of users reporting feeling more motivated to visit after using the app.",
+      "content_3": "Tech stack: React Native, NestJS, Microservices, Azure",
+      "html_content": ""
+    },
+    "Experience_3": {
+      "date": "February 2023 - August 2023",
+      "icon": "Work",
+      "title": "Full-Stack Developer",
+      "subtitle": "Sipecom S.A",
+      "content_1": "Migrated a legacy PHP 5 application to PHP 8.2, fixing security vulnerabilities and retaining a client responsible for 60% of company revenue.",
+      "content_2": "Moved on-premise applications to Azure Cloud, reducing infrastructure maintenance costs by 70%.",
+      "content_3": "Tech stack: PHP, Azure",
+      "html_content": ""
+    },
+    "Experience_4": {
+      "date": "May 2020 - October 2020",
+      "icon": "Work",
+      "title": "Frontend Developer",
+      "subtitle": "Zede del Litoral",
+      "content_1": "Implemented a new website design using HTML, CSS, and JavaScript, increasing inbound client calls by 200%.",
+      "content_2": "Tech stack: HTML, CSS, JavaScript",
+      "html_content": ""
+    }
+  },
+  "Projects": {
+    "title": "Projects",
+    "content": "Explore some of my recent work. Includes work projects, freelancer and personal projects.",
+    "Project_1": {
+      "title": "ESPOL GPA Calculator",
+      "description": "ESPOL GPA Calculator is a simple tool to estimate your GPA based on the grades you enter. It lets you try different scenarios and understand your academic performance. Built to help ESPOL students track their progress quickly and easily.",
+      "tag_1": "Personal"
+    },
+    "Project_2": {
+      "title": "Zentinel Landing Page",
+      "description": "This landing page walks through the platform’s workflow, highlighting its key features, benefits, and use cases. It contains sections that explain visitor registration, enhanced security, and streamlined operations for communities and businesses. It also features screenshots, testimonials, and a clear call to action to help visitors get started and protect their premises today.",
+      "tag_1": "Work"
+    },
+    "Project_3": {
+      "title": "Zentinel",
+      "description": "Zentinel is the modern access control solution for all types of facilities. With smart technology and a user-friendly interface, it simplifies visitor registration and management. Keep your community, company, or educational center secure and well-organized at all times.",
+      "tag_1": "Work"
+    },
+    "Project_4": {
+      "title": "CallBot AI",
+      "description": "This app enables you to generate conversational phone calls powered by generative AI. It provides natural, personalized interactions in real time. Ideal for automating customer service, surveys, or virtual assistants.",
+      "tag_1": "In Progress",
+      "tag_2": "Work"
+    }
+  },
+  "Contact": {
+    "title": "Contact",
+    "content": "Have a project idea or interested in my services? Contact me through these communication channels"
+  }
+}
