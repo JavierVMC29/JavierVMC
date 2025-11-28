@@ -1,9 +1,48 @@
-export const LANGUAGE_SKILLS = ["TypeScript", "JavaScript", "Python", "SQL", "HTML", "CSS"];
+export const LANGUAGE_SKILLS = ["TypeScript", "JavaScript", "Python", "Java", "SQL", "HTML", "CSS"];
 
-export const FRAMEWORK_LIBRARIES_SKILLS = ["React", "Next.js", "NestJS", "Node.js", "Express", "Tailwind CSS", "React Hook Form", "Yup/Zod", "React Query", "TypeORM"];
+export const FRAMEWORK_LIBRARIES_SKILLS = [
+  // Backend
+  "NestJS",
+  "Express",
+  "FastAPI",
+  "Spring Boot",
 
-export const DATABASES_SKILLS = ["PostgreSQL", "MongoDB", "Redis", "MySQL"];
+  // Frontend
+  "React",
+  "Next.js",
+  "Tailwind CSS",
+
+  // Forms & Validation
+  "React Hook Form",
+  "Zod",
+  "Yup",
+
+  // State / Data Management
+  "React Query",
+
+  // ORMs / DB Tools
+  "TypeORM",
+  "SQLAlchemy",
+  "Hibernate",
+];
+
+export const DATABASES_SKILLS = ["PostgreSQL", "MongoDB", "Redis", "MySQL", "ChromaDB"];
 
 export const MICROSERVICES_SKILLS = ["AWS", "Docker", "Kubernetes", "RabbitMQ", "Grafana"];
 
-export const TEST_SKILLS = ["Jest", "JMeter", "Supertest", "Faker"];
+export const TEST_SKILLS = [
+  // JavaScript / TypeScript
+  "Jest",
+  "Supertest",
+  "Cypress",
+  "Faker",
+  "JMeter",
+
+  // Python
+  "pytest",
+
+  // Java
+  "JUnit",
+  "Mockito",
+  "Spring Test",
+];

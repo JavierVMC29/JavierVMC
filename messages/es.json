@@ -51,31 +51,37 @@
       }
     },
     "Skills": {
-      "title": "Servicios y Habilidades",
-      "content": "Ofrezco servicios para la construcción y mantenimiento de sitios web, optimización de la presencia digital de tu negocio y alojamiento de sitios con correo electrónico profesional y dominios personalizados",
+      "title": "Servicios & Habilidades",
+      "content": "Ofrezco soluciones completas para aplicaciones web: diseño, desarrollo, despliegue, optimización, monitoreo y mantenimiento continuo. Ayudo a empresas a mejorar su presencia digital, construir sistemas confiables y lanzar sitios web rápidos, seguros y con dominios personalizados y correos empresariales.",
+
       "FrontEnd": {
         "title": "Desarrollo Frontend",
-        "content": "Construcción de interfaces completas, modernas y responsivas para todo tipo de dispositivos."
+        "content": "Diseño y construyo interfaces modernas, responsivas y centradas en la experiencia del usuario, optimizadas para cualquier dispositivo. Desarrollo experiencias web rápidas, accesibles y visualmente atractivas utilizando las tecnologías más recientes."
       },
+
       "BackEnd": {
         "title": "Desarrollo Backend",
-        "content": "Construcción de sistemas seguros, escalables y de alto rendimiento, desarrollo de APIs, integraciones con bases de datos, microservicios, cron-jobs e Inteligencia Artificial (IA)."
+        "content": "Creo soluciones del lado del servidor que son seguras, escalables y de alto rendimiento. Desarrollo APIs REST, microservicios, arquitecturas de bases de datos, procesos en segundo plano (Cron, schedulers) y funcionalidades impulsadas por IA utilizando frameworks backend modernos."
       },
+
       "Maintenance": {
         "title": "Mantenimiento & Monitoreo",
-        "content": "Corrección de errores, soporte técnico, monitoreo del rendimiento de la aplicación y desarrollo de nuevas funcionalidades que atiendan las necesidades de los clientes."
+        "content": "Brindo soporte continuo, corrección de errores, optimización de rendimiento y desarrollo de nuevas funcionalidades. Implemento herramientas de monitoreo para mantener tus sistemas estables, saludables y funcionando de manera eficiente."
       },
+
       "SoftwareTest": {
         "title": "Pruebas de Software",
-        "content": "Pruebas End-to-End, pruebas unitarias y construcción de escenarios de alta demanda de solicitudes (Pruebas de Carga)."
+        "content": "Creo suites de pruebas automatizadas, incluyendo pruebas unitarias, de integración y end-to-end. También diseño escenarios de carga y estrés para asegurar la estabilidad del sistema a gran escala."
       },
+
       "PerformanceDigitalPresence": {
-        "title": "Performance & Presencia Digital",
-        "content": "Optimización de la velocidad y visibilidad en páginas de búsqueda, SEO, campañas de marketing y captura de leads."
+        "title": "Rendimiento & Presencia Digital",
+        "content": "Mejoro la velocidad del sitio, el posicionamiento SEO, la accesibilidad y las tasas de conversión. Apoyo el crecimiento del negocio mediante SEO técnico, analíticas, embudos de marketing y estrategias de captura de leads."
       },
+
       "WebHosting": {
         "title": "Alojamiento Web",
-        "content": "Alojamiento de sitios, configuración de dominio y subdominios, creación de correo electrónico profesional."
+        "content": "Configuro soluciones de hosting seguras con dominios personalizados, certificados SSL, configuraciones DNS y correos empresariales. Ofrezco despliegue y hosting completamente gestionado para tu sitio o aplicación."
       }
     }
   },
@@ -84,9 +90,9 @@
     "content": "Conoce más sobre mi perfil y habilidades",
     "MainInfo": {
       "title": "Sobre mí",
-      "content_1": "Soy Javier Vega, Ingeniero de Software y Licenciado en Ingeniería Informática por la ESPOL en Ecuador. Cuento con 5 años de experiencia práctica en tecnología y programación, con 3 años especializado en Desarrollo de Software.",
-      "content_2": "Mi trayectoria académica me permitió consolidar conocimientos en Algoritmos, Estructura de Datos, Desarrollo de Sistemas y Base de Datos, los cuales aplico en la construcción de sistemas eficientes y modernos. Creo soluciones de impacto utilizando Typescript, NestJs, Next.js, React y Tailwind.",
-      "content_3": "Actualmente trabajo como Desarrollador de Software en Telecu, una empresa de telecomunicaciones, donde mantengo proyectos existentes y construyo nuevas soluciones para nuestros clientes. Mi rol incluye implementar funcionalidades escalables, escribir pruebas y mejorar continuamente la calidad del código para garantizar un rendimiento y fiabilidad óptimos."
+      "content_1": "Soy Javier Vega, Ingeniero en Software y Licenciado en Ciencias de la Computación por ESPOL en Ecuador. Tengo 5 años de experiencia en tecnología y más de 3 años especializado en Desarrollo de Software profesional.",
+      "content_2": "Mi formación en Algoritmos, Estructuras de Datos, Bases de Datos y Diseño de Sistemas me permite construir soluciones modernas y escalables. He desarrollado aplicaciones utilizando TypeScript, Python, NestJS, FastAPI, Next.js, React y Tailwind.",
+      "content_3": "Actualmente trabajo como Desarrollador de Software en Telecu, una empresa de telecomunicaciones, donde construyo nuevas funcionalidades, mantengo sistemas críticos y desarrollo servicios backend escalables. Mi trabajo incluye escribir código de alta calidad, implementar pruebas y mejorar el rendimiento y la confiabilidad de nuestras aplicaciones."
     },
     "Education": {
       "title": "Educación",
@@ -138,45 +144,76 @@
   },
   "Experiences": {
     "title": "Experiencia",
-    "content": "Mi trayectoria profesional en desarrollo de software y programación",
+    "content": "Mi trayectoria profesional construyendo sistemas escalables, productos con IA y aplicaciones web de extremo a extremo.",
+
     "Experience_1": {
-      "date": "Septiembre 2023 - Actualidad",
+      "date": "Septiembre 2024 - Actualidad",
       "icon": "Work",
-      "title": "Desarrollador Full-Stack",
+      "title": "Desarrollador Full-Stack Semi-Senior",
       "subtitle": "Telecu",
-      "content_1": "Reduje el tiempo de carga de la paginación en un 90% para una tabla con 2 millones de registros utilizando indexación secuencial.",
-      "content_2": "Diseñé un sistema de notificaciones tolerante a fallos mediante un patrón scheduler-supervisor-agent para garantizar el 100% de entrega. (TypeScript, Node.js, Express, RabbitMQ, PostgreSQL)",
-      "content_3": "Automaticé el proceso de registro de vehículos con webhooks y una API de reconocimiento de placas, disminuyendo el tiempo en un 90%.",
-      "content_4": "Stack tecnológico: TypeScript, Node.js, Express, RabbitMQ, PostgreSQL",
+      "content_1": "Lideré ciclos completos de desarrollo desde arquitectura hasta despliegue, incluyendo mentoría a un desarrollador junior. (Node.js, TypeScript, Docker, PostgreSQL)",
+      "content_2": "Arquitecté y desplegué un chatbot RAG que automatizó el 30% de las consultas de clientes. (Python, LangChain, FastAPI)",
+      "content_3": "Construí voice bots y automatizaciones vía WhatsApp impulsadas por IA, aumentando los leads calificados en 15%.",
+      "content_4": "Desarrollé agentes de IA que gestionan más de 500 citas al mes, reduciendo 20 horas semanales de carga administrativa.",
+      "content_5": "Construí un sistema de reportes para técnicos usado por 50+ técnicos, aumentando la tasa de cumplimiento diario en 20%. (React, NestJS, Grafana)",
+      "content_6": "Integré Paymentz, WHMCS y Datil en un sistema unificado de facturación, reduciendo tiempos en 85%.",
+      "content_7": "Diseñé un sistema de notificaciones tolerante a fallos con 100% de fiabilidad en entregas. (NestJS, RabbitMQ, PostgreSQL)",
       "html_content": ""
     },
+
     "Experience_2": {
+      "date": "Septiembre 2023 - Septiembre 2024",
+      "icon": "Work",
+      "title": "Desarrollador Full-Stack Junior",
+      "subtitle": "Telecu",
+      "content_1": "Desarrollé funcionalidades backend y frontend para múltiples plataformas internas y de clientes. (Node.js, TypeScript, React, PostgreSQL)",
+      "content_2": "Implementé APIs REST y microservicios, optimizando tiempos de respuesta y estabilidad.",
+      "content_3": "Brindé soporte en producción, resolviendo incidencias críticas y mejorando la confiabilidad de los servicios.",
+      "content_4": "Trabajé en integración de proveedores externos como Paymentz, WHMCS y Datil.",
+      "html_content": ""
+    },
+
+    "Experience_3": {
       "date": "Octubre 2023 - Febrero 2024",
       "icon": "Work",
       "title": "Ingeniero de Software",
-      "subtitle": "Prefectura Ciudadana del Guayas",
-      "content_1": "Desarrollé una aplicación móvil de turismo para la provincia del Guayas utilizando React Native y NestJS sobre una arquitectura de microservicios en Azure.",
-      "content_2": "Promoví el turismo en la región, logrando que el 90% de los usuarios se sintiera más motivado a visitarla tras usar la app.",
-      "content_3": "Stack tecnológico: React Native, NestJS, Microservicios, Azure",
+      "subtitle": "Prefectura del Guayas",
+      "content_1": "Desarrollé una aplicación móvil de turismo con arquitectura backend modular en microservicios. (React Native, NestJS, Azure)",
+      "content_2": "Mejoré el engagement turístico: 90% de los usuarios reportaron sentirse más motivados a visitar la provincia.",
+      "content_3": "Stack tecnológico: React Native, NestJS, Microservicios, Azure App Services",
       "html_content": ""
     },
-    "Experience_3": {
+
+    "Experience_4": {
       "date": "Febrero 2023 - Agosto 2023",
       "icon": "Work",
       "title": "Desarrollador Full-Stack",
-      "subtitle": "Sipecom S.A",
-      "content_1": "Migré una aplicación heredada en PHP 5 a PHP 8.2, corrigiendo vulnerabilidades de seguridad y reteniendo a un cliente que representaba el 60% de los ingresos de la empresa.",
-      "content_2": "Trasladé aplicaciones on-premise a la nube de Azure, reduciendo los costos de mantenimiento de infraestructura en un 70%.",
-      "content_3": "Stack tecnológico: PHP, Azure",
+      "subtitle": "Sipecom S.A.",
+      "content_1": "Migré sistemas heredados de PHP 5 a PHP 8.2, corrigiendo vulnerabilidades críticas y reteniendo a un cliente clave (60% de ingresos).",
+      "content_2": "Migré sistemas on-premise a Azure Cloud, reduciendo costos operativos y de mantenimiento en 70%. (Azure, Docker, Nginx)",
+      "content_3": "Stack tecnológico: PHP, MySQL, Azure, Docker, Nginx",
       "html_content": ""
     },
-    "Experience_4": {
-      "date": "Mayo 2020 - Octubre 2020",
+
+    "Experience_5": {
+      "date": "Septiembre 2022 - Diciembre 2022",
       "icon": "Work",
-      "title": "Desarrollador Frontend",
-      "subtitle": "Zede del Litoral",
-      "content_1": "Implementé un nuevo diseño para el sitio web utilizando HTML, CSS y JavaScript, aumentando en un 200% las llamadas de clientes interesados.",
-      "content_2": "Stack tecnológico: HTML, CSS, JavaScript",
+      "title": "Ayudante de Cátedra — Lenguajes de Programación",
+      "subtitle": "ESPOL — Escuela Superior Politécnica del Litoral",
+      "content_1": "Enseñé lenguajes de programación como PHP, Ruby, Dart, Python, JavaScript y Clojure a estudiantes del curso de Lenguajes de Programación.",
+      "content_2": "Apoyé en actividades de tutoría, resolución de ejercicios, depuración de código y conceptos de programación funcional.",
+      "content_3": "Habilidades aplicadas: Python, Ruby, Dart, JavaScript, PHP, Clojure, Programación Funcional",
+      "html_content": ""
+    },
+
+    "Experience_6": {
+      "date": "Mayo 2020 - Septiembre 2020",
+      "icon": "Work",
+      "title": "Desarrollador Web Frontend (Pasantía)",
+      "subtitle": "ZEDE del Litoral",
+      "content_1": "Rediseñé la página principal del sitio web e implementé nuevas funcionalidades como un formulario de contacto y un carrusel de imágenes.",
+      "content_2": "Mejoré la experiencia del usuario y aumenté las solicitudes de clientes con una interfaz moderna y responsiva.",
+      "content_3": "Stack tecnológico: HTML, CSS, JavaScript",
       "html_content": ""
     }
   },
@@ -200,10 +237,19 @@
       "tag_1": "Trabajo"
     },
     "Project_4": {
-      "title": "CallBot AI",
+      "title": "Hermes",
       "description": "Esta app te permite generar llamadas conversacionales con un bot impulsado por IA generativa. Ofrece interacciones naturales y personalizadas en tiempo real. Es ideal para automatizar atención al cliente, encuestas o asistentes virtuales.",
-      "tag_1": "En progreso",
-      "tag_2": "Trabajo"
+      "tag_1": "Trabajo"
+    },
+    "Project_5": {
+      "title": "Portal de Servicios Electrónicos: Daule",
+      "description": "Una solución frontend de alto tráfico que habilita la gobernanza digital para el Municipio de Daule, sirviendo a más de 200,000 residentes. Desarrollada con React y TypeScript, la plataforma se enfoca en la estabilidad y accesibilidad. Para garantizar la fiabilidad en servicios públicos críticos, implementé una rigurosa estrategia de pruebas E2E con Cypress, logrando una cobertura del 95% integrada en un pipeline de CI/CD con Jenkins.",
+      "tag_1": "Consultor Externo"
+    },
+    "Project_6": {
+      "title": "Asistente IA de Ley de Protección de Datos",
+      "description": "Un agente conversacional de IA avanzado diseñado para democratizar el acceso a la Ley de Protección de Datos de Ecuador. Construido con Python, LangChain y OpenAI, utiliza una arquitectura RAG (Generación Aumentada por Recuperación) para brindar orientación legal precisa y fundamentada, libre de alucinaciones. Incluye un enrutador semántico para optimización de costos, una base de datos vectorial (ChromaDB) y acceso multicanal a través de una interfaz web moderna en React y WhatsApp.",
+      "tag_1": "Trabajo"
     }
   },
   "Contact": {

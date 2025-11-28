@@ -52,30 +52,36 @@
     },
     "Skills": {
       "title": "Services & Skills",
-      "content": "I offer services to create and provide maintenance for websites, optimize digital presence of your business and host your website with business email and custom domains",
+      "content": "I provide end-to-end solutions for web applications, from design and development to deployment, optimization, monitoring and ongoing maintenance. I help businesses improve their digital presence, build reliable systems, and launch fast, secure websites with custom domains and business email.",
+
       "FrontEnd": {
         "title": "Frontend Development",
-        "content": "Building complete, modern and responsive user interfaces for all types of devices."
+        "content": "Designing and building modern, responsive, and user-friendly interfaces optimized for all devices. I create fast, accessible, and pixel-perfect web experiences using the latest frontend technologies."
       },
+
       "BackEnd": {
         "title": "Backend Development",
-        "content": "Creating secure, scalable and high performance servers, building APIs, database integrations, microservices, Cron-Jobs, Artificial Intelligence (AI)."
+        "content": "Developing secure, scalable, and high-performance server-side solutions. I build REST APIs, microservices, database architectures, background jobs (Cron, schedulers), and AI-powered features using modern backend frameworks."
       },
+
       "Maintenance": {
         "title": "Maintenance & Monitoring",
-        "content": "Bug fixes, tech support, application performance monitoring and development of new features that satisfy costumer needs."
+        "content": "Providing continuous support, bug fixing, performance optimization, and new feature development. I implement monitoring tools to keep your systems healthy, stable, and running efficiently."
       },
+
       "SoftwareTest": {
         "title": "Software Testing",
-        "content": "End to End & Unit Tests, building high rate requests scenarios (Stress Tests)."
+        "content": "Creating automated test suites, including unit, integration, and end-to-end tests. I also design stress and load testing scenarios to ensure system reliability at scale."
       },
+
       "PerformanceDigitalPresence": {
         "title": "Performance & Digital Presence",
-        "content": "Optimizing websites for speed and search engines visibility, SEO, marketing campaigns and leads capture."
+        "content": "Improving website speed, SEO ranking, accessibility, and conversion rates. I support business growth through technical SEO, analytics, marketing funnels, and lead-capture strategies."
       },
+
       "WebHosting": {
         "title": "Web Hosting",
-        "content": "Hosting webistes, domain and subdomain configurations, creating business email."
+        "content": "Setting up secure hosting solutions with custom domains, SSL certificates, DNS configurations, and business email accounts. Fully managed deployment and hosting for your website or application."
       }
     }
   },
@@ -84,9 +90,9 @@
     "content": "Get to know more about my background and skills",
     "MainInfo": {
       "title": "About me",
-      "content_1": "I'm Javier Vega, a Software Engineer and Bachelor in Computer Engineering from ESPOL in Ecuador. I have 5 years of hands-on experience in tech and programming, with 3 years specializing in Software Development.",
-      "content_2": "My academic background gave solid knowledge in Algorithms, Data Structures, System Design, Databases which I apply to create efficient and modern systems. I've delivered impactful solutions using Typescript, NestJS, Next.js, React and Tailwind.",
-      "content_3": "I currently work as a Software Developer at Telecu, a telecommunications company, where I maintain existing projects and build new solutions for our clients. My role involves creating scalable features, writing tests, and continuously improving code quality to ensure optimal performance and reliability."
+      "content_1": "I'm Javier Vega, a Software Engineer and Bachelor in Computer Science from ESPOL in Ecuador. I have 5 years of experience in tech and over 3 years specializing in professional Software Development.",
+      "content_2": "My academic background in Algorithms, Data Structures, Databases, and System Design helps me build scalable and modern systems. I’ve delivered impactful solutions using TypeScript, Python, NestJS, FastAPI, Next.js, React, and Tailwind.",
+      "content_3": "I currently work as a Software Developer at Telecu, a telecommunications company, where I build new features, maintain core systems, and deliver scalable backend services. My work includes writing high-quality code, implementing tests, and improving performance and reliability across our applications."
     },
     "Education": {
       "title": "Education",
@@ -138,45 +144,76 @@
   },
   "Experiences": {
     "title": "Experiences",
-    "content": "My professional career in Software Development and programming trajectory",
+    "content": "My professional journey building scalable systems, AI-powered products, and end-to-end web applications.",
+
     "Experience_1": {
-      "date": "September 2023 - Current",
+      "date": "September 2024 - Present",
       "icon": "Work",
-      "title": "Full-Stack Developer",
+      "title": "Semi-Senior Full-Stack Developer",
       "subtitle": "Telecu",
-      "content_1": "Reduced pagination loading time by 90% for a table with 2 million records using sequential indexing.",
-      "content_2": "Designed a fault-tolerant notification system using a scheduler-supervisor-agent pattern to ensure 100% notification delivery. (TypeScript, Node.js, Express, RabbitMQ, PostgreSQL)",
-      "content_3": "Automated vehicle registration process with webhooks and a license plate recognition API, cutting registration time by 90%.",
-      "content_4": "Tech stack: TypeScript, Node.js, Express, RabbitMQ, PostgreSQL",
+      "content_1": "Led full software development lifecycles from architecture to deployment, including mentoring a junior developer. (Node.js, TypeScript, Docker, PostgreSQL)",
+      "content_2": "Architected and deployed a RAG-based chatbot that automated 30% of client inquiries. (Python, LangChain, FastAPI)",
+      "content_3": "Built AI-powered voice bots and WhatsApp automation, increasing qualified leads by 15%.",
+      "content_4": "Developed AI agents handling 500+ appointment bookings per month, reducing administrative workload by 20 hours/week.",
+      "content_5": "Built a reporting system used by 50+ field technicians, improving daily completion rates by 20%. (React, NestJS, Grafana)",
+      "content_6": "Integrated Paymentz, WHMCS, and Datil into a unified billing system, reducing invoice processing time by 85%.",
+      "content_7": "Designed a fault-tolerant notification system ensuring 100% delivery reliability. (NestJS, RabbitMQ, PostgreSQL)",
       "html_content": ""
     },
+
     "Experience_2": {
+      "date": "September 2023 - September 2024",
+      "icon": "Work",
+      "title": "Junior Full-Stack Developer",
+      "subtitle": "Telecu",
+      "content_1": "Developed backend and frontend features for internal platforms and client-facing applications. (Node.js, TypeScript, React, PostgreSQL)",
+      "content_2": "Implemented REST APIs and microservices, improving system responsiveness and reliability.",
+      "content_3": "Provided production support, resolving critical issues and improving platform stability.",
+      "content_4": "Contributed to integrations with external providers including Paymentz, WHMCS, and Datil.",
+      "html_content": ""
+    },
+
+    "Experience_3": {
       "date": "October 2023 - February 2024",
       "icon": "Work",
       "title": "Software Engineer",
-      "subtitle": "Prefectura Ciudadana del Guayas",
-      "content_1": "Developed a tourism mobile application for Guayas province using React Native and NestJS on a microservices architecture hosted on Azure.",
-      "content_2": "Promoted tourism in the region, with 90% of users reporting feeling more motivated to visit after using the app.",
-      "content_3": "Tech stack: React Native, NestJS, Microservices, Azure",
+      "subtitle": "Prefectura del Guayas",
+      "content_1": "Developed a tourism mobile application for the Guayas province using a modular microservices backend. (React Native, NestJS, Azure)",
+      "content_2": "Improved tourism engagement — 90% of users reported feeling more motivated to visit after using the app.",
+      "content_3": "Tech stack: React Native, NestJS, Microservices, Azure App Services",
       "html_content": ""
     },
-    "Experience_3": {
+
+    "Experience_4": {
       "date": "February 2023 - August 2023",
       "icon": "Work",
       "title": "Full-Stack Developer",
-      "subtitle": "Sipecom S.A",
-      "content_1": "Migrated a legacy PHP 5 application to PHP 8.2, fixing security vulnerabilities and retaining a client responsible for 60% of company revenue.",
-      "content_2": "Moved on-premise applications to Azure Cloud, reducing infrastructure maintenance costs by 70%.",
-      "content_3": "Tech stack: PHP, Azure",
+      "subtitle": "Sipecom S.A.",
+      "content_1": "Upgraded legacy PHP 5 systems to PHP 8.2, resolving security vulnerabilities and retaining a major client responsible for 60% of revenue.",
+      "content_2": "Migrated on-premise applications to Azure Cloud, reducing infrastructure and maintenance costs by 70%. (Azure, Docker, Nginx)",
+      "content_3": "Tech stack: PHP, MySQL, Azure, Docker, Nginx",
       "html_content": ""
     },
-    "Experience_4": {
-      "date": "May 2020 - October 2020",
+
+    "Experience_5": {
+      "date": "September 2022 - December 2022",
       "icon": "Work",
-      "title": "Frontend Developer",
-      "subtitle": "Zede del Litoral",
-      "content_1": "Implemented a new website design using HTML, CSS, and JavaScript, increasing inbound client calls by 200%.",
-      "content_2": "Tech stack: HTML, CSS, JavaScript",
+      "title": "Teaching Assistant — Programming Languages",
+      "subtitle": "ESPOL Polytechnic University",
+      "content_1": "Taught programming languages including PHP, Ruby, Dart, Python, JavaScript, and Clojure to students enrolled in the Programming Languages course.",
+      "content_2": "Assisted students with assignments, debugging, functional programming concepts, and project development.",
+      "content_3": "Skills applied: Python, Ruby, Dart, JavaScript, PHP, Clojure, Functional Programming",
+      "html_content": ""
+    },
+
+    "Experience_6": {
+      "date": "May 2020 - September 2020",
+      "icon": "Work",
+      "title": "Frontend Web Developer (Internship)",
+      "subtitle": "ZEDE del Litoral",
+      "content_1": "Redesigned the company’s main website and implemented new features including a contact form and an image carousel.",
+      "content_2": "Improved user experience and increased inbound client inquiries through a more modern, responsive interface.",
+      "content_3": "Tech stack: HTML, CSS, JavaScript",
       "html_content": ""
     }
   },
@@ -199,10 +236,19 @@
       "tag_1": "Work"
     },
     "Project_4": {
-      "title": "CallBot AI",
+      "title": "Hermes",
       "description": "This app enables you to generate conversational phone calls powered by generative AI. It provides natural, personalized interactions in real time. Ideal for automating customer service, surveys, or virtual assistants.",
-      "tag_1": "In Progress",
-      "tag_2": "Work"
+      "tag_1": "Work"
+    },
+    "Project_5": {
+      "title": "Electronic Services Portal: Daule",
+      "description": "A high-traffic frontend solution enabling digital governance for the Municipality of Daule, serving over 200,000 residents. Developed with React and TypeScript, the platform focuses on stability and accessibility. To ensure zero-failure reliability for critical public services, I implemented a rigorous E2E testing strategy with Cypress, achieving 95% code coverage integrated into a Jenkins CI/CD pipeline.",
+      "tag_1": "Independent Consultant"
+    },
+    "Project_6": {
+      "title": "Data Protection Law AI Assistant",
+      "description": "An advanced AI conversational agent designed to democratize access to Ecuador's Data Protection Law. Built with Python, LangChain, and OpenAI, it utilizes a Retrieval-Augmented Generation (RAG) architecture to provide accurate, citation-backed legal guidance without hallucinations. Features include a semantic router for cost optimization, a vector database (ChromaDB) for document ingestion, and multi-channel access via a modern React web interface and WhatsApp.",
+      "tag_1": "Work"
     }
   },
   "Contact": {

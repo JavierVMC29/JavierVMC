@@ -10,7 +10,7 @@ interface ExperienceTimelineProps {
   experienceAmount: number;
 }
 
-const EXPERIENCE_CONTENT_AMOUNT = [4, 3, 3, 2];
+const EXPERIENCE_CONTENT_AMOUNT = [7, 4, 3, 3, 3, 3];
 
 const ExperienceTimeline = ({ experienceAmount }: ExperienceTimelineProps) => {
   const isMobile = useIsMobile();
