@@ -1,4 +1,4 @@
-export const LANGUAGE_SKILLS = ["TypeScript", "JavaScript", "Python", "Java", "SQL", "HTML", "CSS"];
+export const LANGUAGE_SKILLS = ["TypeScript", "JavaScript", "Python", "Java", "C#", "SQL", "HTML", "CSS"];
 
 export const FRAMEWORK_LIBRARIES_SKILLS = [
   // Backend
@@ -6,6 +6,7 @@ export const FRAMEWORK_LIBRARIES_SKILLS = [
   "Express",
   "FastAPI",
   "Spring Boot",
+  ".NET Core",
 
   // Frontend
   "React",
@@ -24,9 +25,10 @@ export const FRAMEWORK_LIBRARIES_SKILLS = [
   "TypeORM",
   "SQLAlchemy",
   "Hibernate",
+  "Entity Framework",
 ];
 
-export const DATABASES_SKILLS = ["PostgreSQL", "MongoDB", "Redis", "MySQL", "ChromaDB"];
+export const DATABASES_SKILLS = ["PostgreSQL", "Microsoft SQL Server", "MongoDB", "Redis", "MySQL", "ChromaDB"];
 
 export const MICROSERVICES_SKILLS = ["AWS", "Docker", "Kubernetes", "RabbitMQ", "Grafana"];
 

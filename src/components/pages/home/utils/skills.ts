@@ -58,8 +58,38 @@ export const HOME_SKILLS_CARDS = {
         invert: false,
       },
       {
+        title: "Java",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        invert: false,
+      },
+      {
+        title: "C#",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
+        invert: false,
+      },
+      {
+        title: "Python",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        invert: false,
+      },
+      {
         title: "NestJS",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
+        invert: false,
+      },
+      {
+        title: "Spring Boot",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+        invert: false,
+      },
+      {
+        title: ".NET",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg",
+        invert: false,
+      },
+      {
+        title: "FastAPI",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
         invert: false,
       },
       {
@@ -73,8 +103,13 @@ export const HOME_SKILLS_CARDS = {
         invert: false,
       },
       {
-        title: "Postgres",
+        title: "PostgreSQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+        invert: false,
+      },
+      {
+        title: "Microsoft SQL Server",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
         invert: false,
       },
       {
