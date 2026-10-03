@@ -1,0 +1,12 @@
+---
+import { splitMetrics } from "@/lib/highlight";
+
+interface Props {
+  /** Text whose figures ("50%", "500+", "2M+") are emphasized. */
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+{splitMetrics(text).map(({ text, metric }) => (metric ? <strong class="font-semibold text-foreground">{text}</strong> : text))}

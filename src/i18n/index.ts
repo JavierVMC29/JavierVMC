@@ -86,5 +86,11 @@ export function getTranslations(locale: Locale, namespace?: string) {
       .map(({ k }) => k);
   };
 
+  /** Child keys of an object message (the namespace itself when `key` is empty). */
+  t.childKeys = (key: string): string[] => {
+    const node = key ? resolve(locale, fullKey(key)) : namespace ? resolve(locale, namespace) : MESSAGES[locale];
+    return typeof node === "object" ? Object.keys(node) : [];
+  };
+
   return t;
 }

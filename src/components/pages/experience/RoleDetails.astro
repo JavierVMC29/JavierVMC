@@ -1,6 +1,7 @@
 ---
 import { ChevronDown } from "@lucide/astro";
-import { splitMetrics } from "@/lib/highlight";
+import Bullets from "@/components/ui/Bullets.astro";
+import Chips from "@/components/ui/Chips.astro";
 
 interface Props {
   bullets: string[];
@@ -15,26 +16,10 @@ const { bullets, skills, showMoreLabel, showLessLabel } = Astro.props;
 const VISIBLE_BULLETS = 3;
 const visible = bullets.slice(0, VISIBLE_BULLETS);
 const hidden = bullets.slice(VISIBLE_BULLETS);
-
-const bulletClass = "flex gap-3 text-secondary leading-relaxed";
-const markerClass = "mt-[0.6em] size-1.5 shrink-0 rounded-full bg-violet-500/70";
 ---
 
 <div class="flex flex-col gap-4">
-  <ul class="flex flex-col gap-2.5">
-    {
-      visible.map((bullet) => (
-        <li class={bulletClass}>
-          <span class={markerClass} aria-hidden="true" />
-          <span>
-            {splitMetrics(bullet).map(({ text, metric }) =>
-              metric ? <strong class="font-semibold text-foreground">{text}</strong> : text,
-            )}
-          </span>
-        </li>
-      ))
-    }
-  </ul>
+  <Bullets items={visible} />
 
   {
     hidden.length > 0 && (
@@ -44,29 +29,10 @@ const markerClass = "mt-[0.6em] size-1.5 shrink-0 rounded-full bg-violet-500/70"
           <span class="hidden group-open:inline">{showLessLabel}</span>
           <ChevronDown class="size-4 transition-transform group-open:rotate-180" />
         </summary>
-        <ul class="mt-3 flex flex-col gap-2.5">
-          {hidden.map((bullet) => (
-            <li class={bulletClass}>
-              <span class={markerClass} aria-hidden="true" />
-              <span>
-                {splitMetrics(bullet).map(({ text, metric }) =>
-                  metric ? <strong class="font-semibold text-foreground">{text}</strong> : text,
-                )}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <Bullets items={hidden} class="mt-3" />
       </details>
     )
   }
 
-  {
-    skills.length > 0 && (
-      <ul class="flex flex-wrap gap-2" aria-label="Stack">
-        {skills.map((skill) => (
-          <li class="rounded-md border bg-background px-2 py-0.5 text-xs font-medium shadow-xs dark:bg-input/30">{skill}</li>
-        ))}
-      </ul>
-    )
-  }
+  {skills.length > 0 && <Chips items={skills} label="Stack" />}
 </div>

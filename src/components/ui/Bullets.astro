@@ -1,0 +1,24 @@
+---
+import { cn } from "@/lib/utils";
+import HighlightedText from "./HighlightedText.astro";
+
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<ul class={cn("flex flex-col gap-2.5", className)}>
+  {
+    items.map((item) => (
+      <li class="flex gap-3 leading-relaxed text-secondary">
+        <span class="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-violet-500/70" aria-hidden="true" />
+        <span>
+          <HighlightedText text={item} />
+        </span>
+      </li>
+    ))
+  }
+</ul>

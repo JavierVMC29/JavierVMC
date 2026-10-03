@@ -247,37 +247,62 @@
   },
   "Projects": {
     "title": "Proyectos",
-    "content": "Explora mis proyectos más recientes. Contiene proyectos de trabajo, freelances y proyectos personales",
+    "content": "Una selección de mi trabajo reciente: productos desarrollados en el trabajo, proyectos freelance y proyectos personales.",
 
-    "Project_1": {
-      "title": "Calculadora de promedio ESPOL",
-      "description": "Calculadora de Promedio ESPOL es una herramienta sencilla para estimar tu promedio a partir de las calificaciones que ingreses. Ayuda a simular diferentes escenarios y comprender tu desempeño académico. Creada para que los estudiantes de ESPOL calculen su progreso rápido y sin complicaciones.",
-      "tag_1": "Personal"
+    "labels": {
+      "featured": "Destacado",
+      "work": "Proyecto laboral",
+      "freelance": "Consultor independiente",
+      "personal": "Proyecto personal",
+      "viewSite": "Ver sitio",
+      "sourceCode": "Código",
+      "private": "Proyecto interno · no público",
+      "comingSoon": "Próximamente",
+      "viewAll": "Ver todos los proyectos"
     },
-    "Project_2": {
-      "title": "Zentinel Landing Page",
-      "description": "Esta landing page explica paso a paso cómo funciona la plataforma, mostrando sus características clave, beneficios y casos de uso. Incluye secciones que detallan el registro de visitantes, la mejora en la seguridad y la optimización de procesos para comunidades y empresas. Además, presenta capturas, testimonios y un llamado a la acción para que los usuarios empiecen a proteger su espacio hoy mismo.",
-      "tag_1": "Trabajo"
-    },
-    "Project_3": {
-      "title": "Zentinel",
-      "description": "Zentinel es la solución moderna para el control de accesos en todo tipo de instalaciones. Con tecnología inteligente y una interfaz sencilla, permite registrar y gestionar visitas de forma ágil y segura. Mantén tu comunidad, empresa o centro educativo siempre protegido y organizado.",
-      "tag_1": "Trabajo"
-    },
-    "Project_4": {
-      "title": "Hermes",
-      "description": "Esta app te permite generar llamadas conversacionales con un bot impulsado por IA generativa. Ofrece interacciones naturales y personalizadas en tiempo real. Es ideal para automatizar atención al cliente, encuestas o asistentes virtuales.",
-      "tag_1": "Trabajo"
-    },
-    "Project_5": {
-      "title": "Portal de Servicios Electrónicos: Daule",
-      "description": "Una solución frontend de alto tráfico que habilita la gobernanza digital para el Municipio de Daule, sirviendo a más de 200,000 residentes. Desarrollada con React y TypeScript, la plataforma se enfoca en la estabilidad y accesibilidad. Para garantizar la fiabilidad en servicios públicos críticos, implementé una rigurosa estrategia de pruebas E2E con Cypress, logrando una cobertura del 95% integrada en un pipeline de CI/CD con Jenkins.",
-      "tag_1": "Consultor Externo"
-    },
-    "Project_6": {
+
+    "DataProtectionAssistant": {
       "title": "Asistente IA de Ley de Protección de Datos",
-      "description": "Un agente conversacional de IA avanzado diseñado para democratizar el acceso a la Ley de Protección de Datos de Ecuador. Construido con Python, LangChain y OpenAI, utiliza una arquitectura RAG (Generación Aumentada por Recuperación) para brindar orientación legal precisa y fundamentada, libre de alucinaciones. Incluye un enrutador semántico para optimización de costos, una base de datos vectorial (ChromaDB) y acceso multicanal a través de una interfaz web moderna en React y WhatsApp.",
-      "tag_1": "Trabajo"
+      "summary": "Un agente conversacional de IA que acerca la Ley de Protección de Datos de Ecuador a cualquier persona, con respuestas precisas y respaldadas por citas.",
+      "highlight_1": "Diseñé una arquitectura RAG (Generación Aumentada por Recuperación) con LangChain y OpenAI que fundamenta cada respuesta en el texto de la ley para evitar alucinaciones.",
+      "highlight_2": "Incorporé un enrutador semántico para optimizar costos de LLM y una base de datos vectorial (ChromaDB) para la ingesta de documentos.",
+      "highlight_3": "Habilité el acceso multicanal mediante una interfaz web en React y WhatsApp."
+    },
+
+    "Daule": {
+      "title": "Portal de Servicios Electrónicos — Daule",
+      "summary": "El portal de gobierno digital del Municipio de Daule, al servicio de 200.000+ habitantes.",
+      "highlight_1": "Desarrollé un frontend de alto tráfico con React y TypeScript, enfocado en la estabilidad y accesibilidad de servicios públicos críticos.",
+      "highlight_2": "Implementé una rigurosa estrategia de pruebas E2E con Cypress, alcanzando una cobertura del 95%.",
+      "highlight_3": "Integré las pruebas en un pipeline de CI/CD con Jenkins para garantizar despliegues sin fallos."
+    },
+
+    "DeveloperTools": {
+      "title": "Developer Tools",
+      "summary": "Una caja de herramientas rápida y privada para desarrolladores: formatea, convierte, compara y valida JSON, XML, SQL y más, directamente en el navegador.",
+      "highlight_1": "Cada herramienta funciona 100% en el navegador: sin subir archivos, sin cuentas y sin servidor, así los datos sensibles nunca salen de la pestaña del usuario.",
+      "highlight_2": "10 herramientas disponibles —formateadores de JSON, XML y SQL, decodificador JWT, comparador de textos, conversor de timestamps y más— y 19 más en el roadmap.",
+      "highlight_3": "Páginas estáticas con Astro y casi nada de JavaScript, en inglés y español, con paleta de comandos, atajos de teclado y temas claro y oscuro."
+    },
+
+    "Zentinel": {
+      "title": "Zentinel",
+      "summary": "Una plataforma de control de accesos que agiliza el registro y la gestión de visitas para urbanizaciones, empresas y centros educativos.",
+      "highlight_1": "Desarrollé funcionalidades en el frontend en React y el backend en NestJS de la plataforma, con autenticación en Keycloak y PostgreSQL.",
+      "highlight_2": "Construí la landing page del producto con Astro y Tailwind, que explica el flujo de trabajo, las características clave y los casos de uso."
+    },
+
+    "Hermes": {
+      "title": "Hermes",
+      "summary": "Una plataforma que realiza llamadas telefónicas conversacionales con IA generativa, con interacciones naturales y personalizadas en tiempo real.",
+      "highlight_1": "Automatiza la atención al cliente, encuestas y flujos de asistentes virtuales por teléfono.",
+      "highlight_2": "Construida con React y NestJS sobre PostgreSQL, con seguridad en Keycloak y desplegada con Docker."
+    },
+
+    "GpaCalculator": {
+      "title": "Calculadora de promedio ESPOL",
+      "summary": "Una herramienta sencilla para que los estudiantes de la ESPOL estimen su promedio a partir de sus calificaciones y simulen distintos escenarios.",
+      "highlight_1": "Hecha con HTML, CSS y JavaScript puro, y con código abierto en GitHub."
     }
   },
   "Contact": {

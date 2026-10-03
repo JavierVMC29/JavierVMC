@@ -247,36 +247,62 @@
   },
   "Projects": {
     "title": "Projects",
-    "content": "Explore some of my recent work. Includes work projects, freelancer and personal projects.",
-    "Project_1": {
-      "title": "ESPOL GPA Calculator",
-      "description": "ESPOL GPA Calculator is a simple tool to estimate your GPA based on the grades you enter. It lets you try different scenarios and understand your academic performance. Built to help ESPOL students track their progress quickly and easily.",
-      "tag_1": "Personal"
+    "content": "A selection of my recent work: products built at work, freelance projects and personal side projects.",
+
+    "labels": {
+      "featured": "Featured",
+      "work": "Work project",
+      "freelance": "Independent consultant",
+      "personal": "Personal project",
+      "viewSite": "View site",
+      "sourceCode": "Code",
+      "private": "Internal project · not public",
+      "comingSoon": "Coming soon",
+      "viewAll": "See all projects"
     },
-    "Project_2": {
-      "title": "Zentinel Landing Page",
-      "description": "This landing page walks through the platform’s workflow, highlighting its key features, benefits, and use cases. It contains sections that explain visitor registration, enhanced security, and streamlined operations for communities and businesses. It also features screenshots, testimonials, and a clear call to action to help visitors get started and protect their premises today.",
-      "tag_1": "Work"
-    },
-    "Project_3": {
-      "title": "Zentinel",
-      "description": "Zentinel is the modern access control solution for all types of facilities. With smart technology and a user-friendly interface, it simplifies visitor registration and management. Keep your community, company, or educational center secure and well-organized at all times.",
-      "tag_1": "Work"
-    },
-    "Project_4": {
-      "title": "Hermes",
-      "description": "This app enables you to generate conversational phone calls powered by generative AI. It provides natural, personalized interactions in real time. Ideal for automating customer service, surveys, or virtual assistants.",
-      "tag_1": "Work"
-    },
-    "Project_5": {
-      "title": "Electronic Services Portal: Daule",
-      "description": "A high-traffic frontend solution enabling digital governance for the Municipality of Daule, serving over 200,000 residents. Developed with React and TypeScript, the platform focuses on stability and accessibility. To ensure zero-failure reliability for critical public services, I implemented a rigorous E2E testing strategy with Cypress, achieving 95% code coverage integrated into a Jenkins CI/CD pipeline.",
-      "tag_1": "Independent Consultant"
-    },
-    "Project_6": {
+
+    "DataProtectionAssistant": {
       "title": "Data Protection Law AI Assistant",
-      "description": "An advanced AI conversational agent designed to democratize access to Ecuador's Data Protection Law. Built with Python, LangChain, and OpenAI, it utilizes a Retrieval-Augmented Generation (RAG) architecture to provide accurate, citation-backed legal guidance without hallucinations. Features include a semantic router for cost optimization, a vector database (ChromaDB) for document ingestion, and multi-channel access via a modern React web interface and WhatsApp.",
-      "tag_1": "Work"
+      "summary": "A conversational AI agent that makes Ecuador's Data Protection Law accessible to everyone, with accurate, citation-backed answers.",
+      "highlight_1": "Designed a Retrieval-Augmented Generation (RAG) architecture with LangChain and OpenAI that grounds every answer in the text of the law to prevent hallucinations.",
+      "highlight_2": "Added a semantic router to optimize LLM costs and a ChromaDB vector database for document ingestion.",
+      "highlight_3": "Delivered multi-channel access through a React web interface and WhatsApp."
+    },
+
+    "Daule": {
+      "title": "Electronic Services Portal — Daule",
+      "summary": "The digital government portal of the Municipality of Daule, serving 200,000+ residents.",
+      "highlight_1": "Built a high-traffic frontend with React and TypeScript, focused on stability and accessibility for critical public services.",
+      "highlight_2": "Implemented a rigorous end-to-end testing strategy with Cypress, reaching 95% code coverage.",
+      "highlight_3": "Integrated the test suite into a Jenkins CI/CD pipeline to ensure zero-failure releases."
+    },
+
+    "DeveloperTools": {
+      "title": "Developer Tools",
+      "summary": "A fast, private toolbox for developers: format, convert, compare and validate JSON, XML, SQL and more, right in the browser.",
+      "highlight_1": "Every tool runs 100% client-side: no uploads, no accounts and no server, so sensitive data never leaves the user's tab.",
+      "highlight_2": "10 tools live — JSON, XML and SQL formatters, a JWT decoder, text diff, timestamp converter and more — with 19 more on the roadmap.",
+      "highlight_3": "Static Astro pages with almost no JavaScript, in English and Spanish, with a command palette, keyboard shortcuts and light/dark themes."
+    },
+
+    "Zentinel": {
+      "title": "Zentinel",
+      "summary": "An access control platform that streamlines visitor registration and management for residential communities, companies and schools.",
+      "highlight_1": "Developed features across the platform's React frontend and NestJS backend, with Keycloak authentication and PostgreSQL.",
+      "highlight_2": "Built the product's landing page with Astro and Tailwind, walking visitors through the workflow, key features and use cases."
+    },
+
+    "Hermes": {
+      "title": "Hermes",
+      "summary": "A platform that places conversational phone calls powered by generative AI, with natural, personalized interactions in real time.",
+      "highlight_1": "Automates customer service, surveys and virtual-assistant flows over the phone.",
+      "highlight_2": "Built on React and NestJS with PostgreSQL, secured with Keycloak and deployed with Docker."
+    },
+
+    "GpaCalculator": {
+      "title": "ESPOL GPA Calculator",
+      "summary": "A simple tool that helps ESPOL students estimate their GPA from the grades they enter and try different scenarios.",
+      "highlight_1": "Built with plain HTML, CSS and JavaScript, and open source on GitHub."
     }
   },
   "Contact": {

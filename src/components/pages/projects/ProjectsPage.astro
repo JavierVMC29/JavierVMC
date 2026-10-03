@@ -1,34 +1,54 @@
 ---
+import { ArrowRight } from "@lucide/astro";
 import SectionTitle from "@/components/sections/SectionTitle.astro";
-import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
-import { PROJECTS_ITEMS } from "./data";
-import ProjectsItem from "./ProjectsItem.astro";
+import { GlobalMessageKeys, getTranslations, localizePath, type Locale } from "@/i18n";
+import { Paths } from "@/lib/paths";
+import { buttonVariants } from "@/lib/ui";
+import { cn } from "@/lib/utils";
+import { PROJECTS } from "./data";
+import ProjectCard from "./ProjectCard.astro";
 
 interface Props {
   locale: Locale;
+  /** Home page: only the featured projects plus a link to the full list. */
+  featuredOnly?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, featuredOnly = false } = Astro.props;
 const t = getTranslations(locale, GlobalMessageKeys.Projects);
+
+// Every project message must be placed in data.ts (and vice versa, via the t() calls in ProjectCard).
+const placed = new Set(PROJECTS.map((project) => project.key));
+const unplaced = t.childKeys("").filter((key) => !["title", "content", "labels"].includes(key) && !placed.has(key));
+if (unplaced.length) {
+  throw new Error(`[projects] Add ${unplaced.join(", ")} to src/components/pages/projects/data.ts`);
+}
+
+const featured = PROJECTS.filter((project) => project.featured);
+const others = PROJECTS.filter((project) => !project.featured);
 ---
 
 <main class="page-container">
   <SectionTitle title={t("title")} description={t("content")} />
 
-  <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-[1440px]">
+  <div class="flex w-full max-w-6xl flex-col gap-6 lg:gap-8">
+    {featured.map((project) => <ProjectCard project={project} locale={locale} featured />)}
+
     {
-      Object.entries(PROJECTS_ITEMS).map(([key, { image, href, githubHref, tags }]) => (
-        <div>
-          <ProjectsItem
-            image={image}
-            title={t(`${key}.title`)}
-            description={t(`${key}.description`)}
-            tags={[...t.numberedKeys(key, "tag_").map((tagKey) => t(`${key}.${tagKey}`)), ...tags]}
-            href={href}
-            githubHref={githubHref}
-          />
+      featuredOnly ? (
+        <div class="flex justify-center pt-2">
+          <a href={localizePath(locale, Paths.Projects)} class={cn(buttonVariants({ variant: "outline" }))}>
+            {t("labels.viewAll")}
+            <ArrowRight />
+          </a>
         </div>
-      ))
+      ) : (
+        <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
+          {others.map((project) => (
+            <ProjectCard project={project} locale={locale} />
+          ))}
+        </div>
+      )
     }
-  </section>
+  </div>
 </main>

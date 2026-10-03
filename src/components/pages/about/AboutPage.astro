@@ -18,10 +18,11 @@ import {
   TrendingUp,
 } from "@lucide/astro";
 import SectionTitle from "@/components/sections/SectionTitle.astro";
+import Chips from "@/components/ui/Chips.astro";
+import HighlightedText from "@/components/ui/HighlightedText.astro";
 import { EXPERIENCE } from "@/components/pages/experience/data";
 import { GlobalMessageKeys, getTranslations, localizePath, type Locale } from "@/i18n";
 import { formatYearMonth, monthsBetween } from "@/lib/dates";
-import { splitMetrics } from "@/lib/highlight";
 import { Paths } from "@/lib/paths";
 import { buttonVariants } from "@/lib/ui";
 import { cn } from "@/lib/utils";
@@ -75,7 +76,6 @@ const SKILL_ICONS: Record<SkillIcon, typeof MapPin> = {
 const iconTileClass =
   "flex shrink-0 items-center justify-center rounded-lg bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 ring-inset dark:text-violet-300";
 const cardClass = "rounded-xl border bg-card text-card-foreground shadow-sm";
-const chipClass = "rounded-md border bg-background px-2 py-0.5 text-xs font-medium shadow-xs dark:bg-input/30";
 ---
 
 <main class="page-container">
@@ -89,9 +89,7 @@ const chipClass = "rounded-md border bg-background px-2 py-0.5 text-xs font-medi
         {
           bio.map((paragraph, index) => (
             <p class={index === 0 ? "text-lg leading-relaxed sm:text-xl" : "leading-relaxed text-secondary"}>
-              {splitMetrics(paragraph).map(({ text, metric }) =>
-                metric ? <strong class="font-semibold text-foreground">{text}</strong> : text,
-              )}
+              <HighlightedText text={paragraph} />
             </p>
           ))
         }
@@ -149,11 +147,7 @@ const chipClass = "rounded-md border bg-background px-2 py-0.5 text-xs font-medi
                   </div>
                   <h4 class="font-semibold">{t(`Skills.${key}.title`)}</h4>
                 </div>
-                <ul class="flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <li class={chipClass}>{item}</li>
-                  ))}
-                </ul>
+                <Chips items={items} />
               </div>
             );
           })

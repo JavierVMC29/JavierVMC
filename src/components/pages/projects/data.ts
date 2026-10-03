@@ -1,55 +1,77 @@
 import type { ImageMetadata } from "astro";
-import Project1 from "@/assets/images/project1.jpg";
-import Project2 from "@/assets/images/project2.jpg";
-import Project3 from "@/assets/images/project3.jpg";
-import Project4 from "@/assets/images/project4.jpg";
-import Project5 from "@/assets/images/project5.jpg";
-import Project6 from "@/assets/images/project6.jpg";
+import DataProtectionAssistant from "@/assets/images/data-protection-assistant.jpg";
+import Daule from "@/assets/images/daule.jpg";
+import DeveloperTools from "@/assets/images/developer-tools.jpg";
+import Zentinel from "@/assets/images/zentinel.jpg";
+import Hermes from "@/assets/images/hermes.jpg";
+import GpaCalculator from "@/assets/images/gpa-calculator.jpg";
 
-interface ProjectItem {
+export type ProjectKind = "work" | "freelance" | "personal";
+
+export interface ProjectItem {
+  /** Key of the `Projects.<key>` message (title, summary, highlight_N). */
+  key: string;
   image: ImageMetadata;
-  href: string;
-  githubHref: string;
-  /** Untranslated tech tags, shown after the translated `Projects.<key>.tag_N` messages. */
-  tags: string[];
+  /** Tailwind object-position class for the screenshot crop (default: "object-top"). */
+  imagePosition?: string;
+  kind: ProjectKind;
+  /** Optional company shown next to the kind badge, e.g. "Telecu". */
+  company?: string;
+  /** Public URL. Omit for internal projects. */
+  href?: string;
+  githubHref?: string;
+  /** Not published yet: shows "Coming soon" with the future domain instead of a link. */
+  comingSoon?: boolean;
+  /** Shown as large cards at the top, and on the home page. */
+  featured?: boolean;
+  skills: string[];
 }
 
-/** Keys match the `Projects.<key>` messages (title, description, tag_N). */
-export const PROJECTS_ITEMS: Record<string, ProjectItem> = {
-  Project_1: {
-    image: Project1,
+/** Display order: featured first, then by impact. */
+export const PROJECTS: ProjectItem[] = [
+  {
+    key: "DataProtectionAssistant",
+    image: DataProtectionAssistant,
+    kind: "work",
+    featured: true,
+    skills: ["Python", "LangChain", "OpenAI", "FastAPI", "ChromaDB", "PostgreSQL", "TypeScript", "React", "Tailwind", "Cypress", "Jest", "Vite", "Docker", "Keycloak"],
+  },
+  {
+    key: "Daule",
+    image: Daule,
+    imagePosition: "object-left-top",
+    kind: "freelance",
+    href: "https://enlinea.daule.gob.ec/",
+    featured: true,
+    skills: ["TypeScript", "React", "Tailwind", "Cypress", "Jest", "Vite", "Jenkins"],
+  },
+  {
+    key: "DeveloperTools",
+    image: DeveloperTools,
+    kind: "personal",
+    href: "https://developer-tools.javiervmc.com",
+    comingSoon: true,
+    skills: ["Astro", "TypeScript", "Tailwind", "Zod"],
+  },
+  {
+    key: "Zentinel",
+    image: Zentinel,
+    kind: "work",
+    href: "https://zentinel.ec",
+    skills: ["TypeScript", "React", "NestJS", "Node.js", "Express", "TypeORM", "PostgreSQL", "Keycloak", "Docker", "Astro", "Tailwind"],
+  },
+  {
+    key: "Hermes",
+    image: Hermes,
+    kind: "work",
+    skills: ["TypeScript", "React", "Tailwind", "NestJS", "TypeORM", "Keycloak", "PostgreSQL", "Docker"],
+  },
+  {
+    key: "GpaCalculator",
+    image: GpaCalculator,
+    kind: "personal",
     href: "https://calculadora-espol.javiervmc.com",
     githubHref: "https://github.com/JavierVMC29/calculadora-espol",
-    tags: ["HTML", "CSS", "JavaScript"],
+    skills: ["HTML", "CSS", "JavaScript"],
   },
-  Project_2: {
-    image: Project2,
-    href: "https://zentinel.ec",
-    githubHref: "",
-    tags: ["TypeScript", "Astro", "Tailwind"],
-  },
-  Project_3: {
-    image: Project3,
-    href: "https://zentinel.ec",
-    githubHref: "",
-    tags: ["TypeScript", "React", "Tailwind", "Keycloak", "PostgreSQL", "Node.js", "Express", "NesJS", "TypeORM", "Docker"],
-  },
-  Project_4: {
-    image: Project4,
-    href: "",
-    githubHref: "",
-    tags: ["TypeScript", "React", "Tailwind", "NestJS", "TypeORM", "Keycloak", "PostgreSQL", "Docker"],
-  },
-  Project_5: {
-    image: Project5,
-    href: "https://enlinea.daule.gob.ec/",
-    githubHref: "",
-    tags: ["TypeScript", "React", "Tailwind", "Cypress", "Jest", "Vite"],
-  },
-  Project_6: {
-    image: Project6,
-    href: "",
-    githubHref: "",
-    tags: ["Python", "LangChain", "OpenAI", "FastAPI", "PostgreSQL", "ChromaDB", "TypeScript", "React", "Tailwind", "Cypress", "Jest", "Vite", "Docker", "Keycloak"],
-  },
-};
+];
