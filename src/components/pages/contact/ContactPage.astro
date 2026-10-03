@@ -1,0 +1,45 @@
+---
+import AppImage from "@/components/ui/AppImage.astro";
+import Card from "@/components/ui/Card.astro";
+import SectionTitle from "@/components/sections/SectionTitle.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { SOCIAL_MEDIA, SOCIAL_MEDIA_KEYS } from "@/lib/constants/socialMedia";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.Contact);
+const tSocial = getTranslations(locale, GlobalMessageKeys.SocialMedia);
+const socialKey = (name: string) => SOCIAL_MEDIA_KEYS[name as keyof typeof SOCIAL_MEDIA_KEYS];
+---
+
+<main class={cn("page-container lg:h-[75vh]", className)}>
+  <SectionTitle title={t("title")} description={t("content")} />
+
+  <Card class="px-4 sm:px-8 sm:w-[440px]">
+    {
+      Object.values(SOCIAL_MEDIA).map(({ name, image, href, hasLocale, localeName, linkName }) => (
+        <a
+          href={hasLocale ? tSocial(`${socialKey(name)}.href`) : href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group"
+        >
+          <Card class="px-4 group-hover:bg-gray-100 dark:group-hover:bg-neutral-800 transition-all">
+            <div class="flex gap-4 items-center">
+              <AppImage src={image} alt={name} width={64} class="dark:invert w-8 h-8" />
+              <div class="flex flex-col">
+                <h3 class="font-semibold">{name}</h3>
+                <p class="text-sm text-secondary">{localeName ? tSocial(`${socialKey(name)}.name`) : linkName}</p>
+              </div>
+            </div>
+          </Card>
+        </a>
+      ))
+    }
+  </Card>
+</main>

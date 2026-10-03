@@ -1,0 +1,60 @@
+---
+import AppImage from "@/components/ui/AppImage.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { buttonVariants } from "@/lib/ui";
+import { cn } from "@/lib/utils";
+import { HERO_CTAS, HERO_CTAS_IMAGES } from "./data";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, `${GlobalMessageKeys.HomePage}.Hero`);
+---
+
+<!-- Elements with data-start-class get that class 250ms after load, which triggers the CSS transitions in animation.css -->
+<div class="flex items-end justify-center mx-auto pt-4">
+  <div class="relative overflow-hidden h-[555px]">
+    <div class="flex flex-col items-center justify-center gap-12">
+      <div class="flex flex-col items-center justify-center gap-12 px-5 pt-24 sm:pt-36">
+        <h2 class="font-bold text-5xl sm:text-7xl text-center animation-opacity" data-start-class="animation-opacity-start">
+          {t("title")}
+        </h2>
+        <div class="max-w-3xl animation-opacity" data-start-class="animation-opacity-start">
+          <p class="text-2xl sm:text-3xl text-center leading-[160%]">
+            {t("content")}
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-8 animation-opacity" data-start-class="animation-opacity-start">
+        {
+          HERO_CTAS.map((item) => (
+            <a
+              href={t(`CTAs.${item}.path`)}
+              class={cn(buttonVariants({ variant: "outline", className: "flex items-center gap-2 cursor-pointer" }))}
+            >
+              {t(`CTAs.${item}.name`)}
+              <AppImage src={HERO_CTAS_IMAGES[item]} alt={item} class="dark:invert" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hero-animation" data-start-class="hero-animation-start">
+      <div class="hero-circle-1" data-start-class="hero-animation-active"></div>
+      <div class="hero-circle-2" data-start-class="hero-animation-active"></div>
+      <div class="hero-circle-3" data-start-class="hero-animation-active"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    document.querySelectorAll<HTMLElement>("[data-start-class]").forEach((el) => {
+      el.classList.add(el.dataset.startClass!);
+    });
+  }, 250);
+</script>

@@ -1,0 +1,15 @@
+---
+import ExperiencePage from "@/components/pages/experience/ExperiencePage.astro";
+import { GlobalMessageKeys, getLocaleStaticPaths, getTranslations, type Locale } from "@/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Paths } from "@/lib/paths";
+
+export const getStaticPaths = getLocaleStaticPaths;
+
+const locale = Astro.params.locale as Locale;
+const t = getTranslations(locale, GlobalMessageKeys.Experience);
+---
+
+<BaseLayout locale={locale} path={Paths.Experience} title={t("title")} description={t("content")}>
+  <ExperiencePage locale={locale} />
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+// Same look as the default Next.js 404 page the site used to show.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>404: This page could not be found.</title>
+    <link rel="icon" href="/assets/metadata/favicon.ico" sizes="any" />
+    <style>
+      body {
+        color: #000;
+        background: #fff;
+        margin: 0;
+      }
+      .error {
+        font-family:
+          system-ui,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        display: inline-block;
+        margin: 0 20px 0 0;
+        padding: 0 23px 0 0;
+        font-size: 24px;
+        font-weight: 500;
+        vertical-align: top;
+        line-height: 49px;
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+      }
+      .message {
+        display: inline-block;
+      }
+      h2 {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 49px;
+        margin: 0;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #fff;
+          background: #000;
+        }
+        h1 {
+          border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error">
+      <div>
+        <h1>404</h1>
+        <div class="message"><h2>This page could not be found.</h2></div>
+      </div>
+    </div>
+  </body>
+</html>
