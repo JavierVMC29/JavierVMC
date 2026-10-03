@@ -88,49 +88,73 @@
   "About": {
     "title": "About",
     "content": "Get to know more about my background and skills",
+
     "MainInfo": {
-      "title": "About me",
-      "content_1": "I'm Javier Vega, a Software Engineer and Bachelor in Computer Science from ESPOL in Ecuador. I have 5 years of experience in tech and over 3 years specializing in professional Software Development.",
-      "content_2": "My academic background in Algorithms, Data Structures, Databases, and System Design helps me build scalable and modern systems. I’ve delivered impactful solutions using TypeScript, Python, NestJS, FastAPI, Next.js, React, and Tailwind.",
-      "content_3": "I currently work as a Software Developer at Telecu, a telecommunications company, where I build new features, maintain core systems, and deliver scalable backend services. My work includes writing high-quality code, implementing tests, and improving performance and reliability across our applications."
+      "title": "Who I am",
+      "content_1": "I'm Javier Vega, a Software Engineer from Guayaquil, Ecuador. I hold a Bachelor's in Computer Science from ESPOL and a Master's in Artificial Intelligence from UEES.",
+      "content_2": "Today I work at Banco Bolivariano, building banking services and integrations on AWS with Java and Spring Boot — from a phonetic search with OpenSearch that cut remittance cancellations by 50% to real-time interbank payments through BANRED.",
+      "content_3": "Before that, I spent over two years at Telecu, where I grew from Junior to Semi-Senior full-stack developer building RAG chatbots, AI agents, voice bots and billing integrations with TypeScript, NestJS, React and Python.",
+      "content_4": "I focus on dependable, well-tested systems and on practical uses of AI that solve real business problems."
     },
-    "Education": {
-      "title": "Education",
-      "University": {
-        "title": "Bachelor in Computer Science",
-        "content": "ESPOL - Escuela Superior Politécnica del Litoral",
-        "date": "May 2019 - March 2024",
-        "location": "Ecuador, Guayaquil"
-      },
-      "Bootcamp": {
-        "title": "Master's in Artificial Intelligence",
-        "content": "UEES - Universidad de Especialidades Espíritu Santo",
-        "date": "March 2025 - May 2026",
-        "location": "Ecuador, Guayaquil"
-      }
+
+    "Facts": {
+      "title": "At a glance",
+      "role": "Current role",
+      "roleValue": "{title} at {company}",
+      "location": "Based in",
+      "locationValue": "Guayaquil, Ecuador",
+      "experience": "Professional experience",
+      "experienceValue": "{count}+ years",
+      "focus": "Focus",
+      "focusValue": "Backend · Cloud · AI",
+      "education": "Education",
+      "educationValue": "Master's in Artificial Intelligence",
+      "ctaExperience": "View experience",
+      "ctaContact": "Get in touch"
     },
+
     "Skills": {
       "title": "Skills",
       "Languages": {
         "title": "Languages"
       },
-      "Frameworks": {
-        "title": "Frameworks/Libraries"
+      "Backend": {
+        "title": "Backend"
+      },
+      "Frontend": {
+        "title": "Frontend & Mobile"
+      },
+      "AI": {
+        "title": "AI & LLMs"
       },
       "Databases": {
         "title": "Databases"
       },
-      "Microservices": {
-        "title": "Microservices/DevOps"
+      "Cloud": {
+        "title": "Cloud & DevOps"
       },
       "Tests": {
         "title": "Software Testing"
       }
     },
+
+    "Education": {
+      "title": "Education",
+      "graduated": "Graduated",
+      "Masters": {
+        "title": "Master's in Artificial Intelligence",
+        "content": "UEES — Universidad de Especialidades Espíritu Santo"
+      },
+      "University": {
+        "title": "Bachelor's in Computer Science",
+        "content": "ESPOL — Escuela Superior Politécnica del Litoral"
+      }
+    },
+
     "Concepts": {
-      "title": "Concepts",
+      "title": "Core concepts",
       "content_1": "Data Structures",
-      "content_2": "Algorithms Design and Analysis",
+      "content_2": "Algorithm Design and Analysis",
       "content_3": "Artificial Intelligence",
       "content_4": "Object-Oriented Programming",
       "content_5": "Computer Networks",
@@ -139,7 +163,7 @@
       "content_8": "Computer Security",
       "content_9": "Operating Systems",
       "content_10": "Software Engineering",
-      "content_11": "Human-Computer Interation UI/UX"
+      "content_11": "Human-Computer Interaction (UI/UX)"
     }
   },
   "Experiences": {

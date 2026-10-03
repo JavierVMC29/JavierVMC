@@ -1,5 +1,6 @@
 ---
 import { ChevronDown } from "@lucide/astro";
+import { splitMetrics } from "@/lib/highlight";
 
 interface Props {
   bullets: string[];
@@ -15,11 +16,6 @@ const VISIBLE_BULLETS = 3;
 const visible = bullets.slice(0, VISIBLE_BULLETS);
 const hidden = bullets.slice(VISIBLE_BULLETS);
 
-// Split each bullet so figures like "50%", "500+" or "2M+" can be emphasized.
-const METRIC = /(\d[\d.,]*\s?%|\d[\d.,]*M?\+)/;
-const segments = (text: string) =>
-  text.split(METRIC).map((part, index) => ({ text: part, metric: index % 2 === 1 }));
-
 const bulletClass = "flex gap-3 text-secondary leading-relaxed";
 const markerClass = "mt-[0.6em] size-1.5 shrink-0 rounded-full bg-violet-500/70";
 ---
@@ -31,7 +27,7 @@ const markerClass = "mt-[0.6em] size-1.5 shrink-0 rounded-full bg-violet-500/70"
         <li class={bulletClass}>
           <span class={markerClass} aria-hidden="true" />
           <span>
-            {segments(bullet).map(({ text, metric }) =>
+            {splitMetrics(bullet).map(({ text, metric }) =>
               metric ? <strong class="font-semibold text-foreground">{text}</strong> : text,
             )}
           </span>
@@ -53,7 +49,7 @@ const markerClass = "mt-[0.6em] size-1.5 shrink-0 rounded-full bg-violet-500/70"
             <li class={bulletClass}>
               <span class={markerClass} aria-hidden="true" />
               <span>
-                {segments(bullet).map(({ text, metric }) =>
+                {splitMetrics(bullet).map(({ text, metric }) =>
                   metric ? <strong class="font-semibold text-foreground">{text}</strong> : text,
                 )}
               </span>

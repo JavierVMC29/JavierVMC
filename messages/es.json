@@ -16,7 +16,7 @@
   },
   "HeaderItems": {
     "About": {
-      "name": "SOBRE",
+      "name": "SOBRE MÍ",
       "path": "/es/about"
     },
     "Experience": {
@@ -86,50 +86,74 @@
     }
   },
   "About": {
-    "title": "Sobre",
+    "title": "Sobre mí",
     "content": "Conoce más sobre mi perfil y habilidades",
+
     "MainInfo": {
-      "title": "Sobre mí",
-      "content_1": "Soy Javier Vega, Ingeniero en Software y Licenciado en Ciencias de la Computación por ESPOL en Ecuador. Tengo 5 años de experiencia en tecnología y más de 3 años especializado en Desarrollo de Software profesional.",
-      "content_2": "Mi formación en Algoritmos, Estructuras de Datos, Bases de Datos y Diseño de Sistemas me permite construir soluciones modernas y escalables. He desarrollado aplicaciones utilizando TypeScript, Python, NestJS, FastAPI, Next.js, React y Tailwind.",
-      "content_3": "Actualmente trabajo como Desarrollador de Software en Telecu, una empresa de telecomunicaciones, donde construyo nuevas funcionalidades, mantengo sistemas críticos y desarrollo servicios backend escalables. Mi trabajo incluye escribir código de alta calidad, implementar pruebas y mejorar el rendimiento y la confiabilidad de nuestras aplicaciones."
+      "title": "Quién soy",
+      "content_1": "Soy Javier Vega, ingeniero de software de Guayaquil, Ecuador. Me formé como Ingeniero en Ciencias de la Computación en la ESPOL y obtuve una Maestría en Inteligencia Artificial en la UEES.",
+      "content_2": "Hoy trabajo en Banco Bolivariano desarrollando servicios e integraciones bancarias en AWS con Java y Spring Boot: desde una búsqueda fonética con OpenSearch que redujo en un 50% las cancelaciones de remesas hasta pagos interbancarios en tiempo real a través de BANRED.",
+      "content_3": "Antes pasé más de dos años en Telecu, donde crecí de desarrollador full-stack Junior a Semi-Senior construyendo chatbots RAG, agentes de IA, voice bots e integraciones de facturación con TypeScript, NestJS, React y Python.",
+      "content_4": "Me enfoco en sistemas confiables y bien probados, y en usos prácticos de la IA que resuelvan problemas reales de negocio."
     },
-    "Education": {
-      "title": "Educación",
-      "University": {
-        "title": "Ingeniería en Ciencias de la Computación",
-        "content": "ESPOL - Escuela Superior Politécnica del Litoral",
-        "date": "Mayo 2019 - Marzo 2024",
-        "location": "Ecuador, Guayaquil"
-      },
-      "Bootcamp": {
-        "title": "Maestría en Inteligencia Artificial",
-        "content": "UEES - Universidad de Especialidades Espíritu Santo",
-        "date": "Marzo 2025 - Mayo 2026",
-        "location": "Ecuador, Guayaquil"
-      }
+
+    "Facts": {
+      "title": "De un vistazo",
+      "role": "Puesto actual",
+      "roleValue": "{title} en {company}",
+      "location": "Ubicación",
+      "locationValue": "Guayaquil, Ecuador",
+      "experience": "Experiencia profesional",
+      "experienceValue": "{count}+ años",
+      "focus": "Enfoque",
+      "focusValue": "Backend · Cloud · IA",
+      "education": "Formación",
+      "educationValue": "Maestría en Inteligencia Artificial",
+      "ctaExperience": "Ver experiencia",
+      "ctaContact": "Contáctame"
     },
+
     "Skills": {
       "title": "Habilidades",
       "Languages": {
         "title": "Lenguajes"
       },
-      "Frameworks": {
-        "title": "Frameworks/Bibliotecas"
+      "Backend": {
+        "title": "Backend"
+      },
+      "Frontend": {
+        "title": "Frontend y Móvil"
+      },
+      "AI": {
+        "title": "IA y LLMs"
       },
       "Databases": {
-        "title": "Base de Datos"
+        "title": "Bases de Datos"
       },
-      "Microservices": {
-        "title": "Microservicios/DevOps"
+      "Cloud": {
+        "title": "Cloud y DevOps"
       },
       "Tests": {
         "title": "Pruebas de Software"
       }
     },
+
+    "Education": {
+      "title": "Educación",
+      "graduated": "Graduado",
+      "Masters": {
+        "title": "Maestría en Inteligencia Artificial",
+        "content": "UEES — Universidad de Especialidades Espíritu Santo"
+      },
+      "University": {
+        "title": "Ingeniería en Ciencias de la Computación",
+        "content": "ESPOL — Escuela Superior Politécnica del Litoral"
+      }
+    },
+
     "Concepts": {
-      "title": "Conceptos",
-      "content_1": "Estructura de Datos",
+      "title": "Conceptos clave",
+      "content_1": "Estructuras de Datos",
       "content_2": "Diseño y Análisis de Algoritmos",
       "content_3": "Inteligencia Artificial",
       "content_4": "Programación Orientada a Objetos",
@@ -139,7 +163,7 @@
       "content_8": "Seguridad Informática",
       "content_9": "Sistemas Operativos",
       "content_10": "Ingeniería de Software",
-      "content_11": "Interacción Humano-Computadora UI/UX"
+      "content_11": "Interacción Humano-Computador (UI/UX)"
     }
   },
   "Experiences": {
