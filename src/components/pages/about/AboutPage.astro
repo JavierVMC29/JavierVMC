@@ -1,0 +1,85 @@
+---
+import Card from "@/components/ui/Card.astro";
+import CardContent from "@/components/ui/CardContent.astro";
+import CardDescription from "@/components/ui/CardDescription.astro";
+import CardHeader from "@/components/ui/CardHeader.astro";
+import CardTitle from "@/components/ui/CardTitle.astro";
+import SectionTitle from "@/components/sections/SectionTitle.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { buttonVariants } from "@/lib/ui";
+import { cn } from "@/lib/utils";
+import { ABOUT_EDUCATION, ABOUT_SKILLS } from "./skills";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.About);
+---
+
+<main class="page-container">
+  <SectionTitle title={t("title")} description={t("content")} />
+
+  <section class="flex flex-col gap-12 lg:gap-24 max-w-[1400px] md:flex-row">
+    <div class="md:w-1/2 flex flex-col gap-8">
+      <div class="flex flex-col gap-4">
+        <h3 class="font-bold text-2xl">{t("MainInfo.title")}</h3>
+        {t.numberedKeys("MainInfo", "content_").map((key) => <p class="text-secondary md:text-justify">{t(`MainInfo.${key}`)}</p>)}
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h3 class="text-2xl font-bold">{t("Concepts.title")}</h3>
+        <Card>
+          <ul class="flex flex-col gap-4 items-start">
+            {t.numberedKeys("Concepts", "content_").map((key) => <li class="list-disc ml-10">{t(`Concepts.${key}`)}</li>)}
+          </ul>
+        </Card>
+      </div>
+    </div>
+
+    <div class="md:w-1/2 flex flex-col gap-8">
+      <div class="flex flex-col gap-4">
+        <h3 class="font-bold text-2xl">{t("Skills.title")}</h3>
+        <div class="flex flex-col gap-8">
+          {
+            Object.entries(ABOUT_SKILLS).map(([key, items]) => (
+              <div class="flex flex-col gap-4">
+                <h3 class="text-lg font-semibold">{t(`Skills.${key}.title`)}</h3>
+                <div class="flex gap-4 items-center flex-wrap">
+                  {items.map((item) => (
+                    <button type="button" class={cn(buttonVariants({ variant: "outline" }))}>
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h3 class="font-bold text-2xl">{t("Education.title")}</h3>
+        <div class="flex flex-col gap-8">
+          {
+            ABOUT_EDUCATION.map((key) => (
+              <Card>
+                <CardHeader>
+                  <CardTitle class="text-lg">{t(`Education.${key}.title`)}</CardTitle>
+                  <CardDescription class="text-secondary font-semibold">{t(`Education.${key}.content`)}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div class="flex items-center justify-between gap-4">
+                    <p class="text-secondary text-sm">{t(`Education.${key}.date`)}</p>
+                    <p class="text-secondary text-sm">{t(`Education.${key}.location`)}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

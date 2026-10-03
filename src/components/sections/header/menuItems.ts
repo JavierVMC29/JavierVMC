@@ -1,0 +1,1 @@
+export const HEADER_MENU_ITEMS = ["About", "Experience", "Projects", "Contact"] as const;

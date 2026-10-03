@@ -1,0 +1,17 @@
+---
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  locale: Locale;
+  hasOrder?: boolean;
+}
+
+const { locale, hasOrder = true } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.HomePath);
+---
+
+<a href={t("path")} class={hasOrder ? "order-2 md:order-1" : ""}>
+  <div class="flex items-center gap-4">
+    <h1 class="text-base lg:text-lg transition-colors font-bold">JAVIER VEGA MOLINA</h1>
+  </div>
+</a>

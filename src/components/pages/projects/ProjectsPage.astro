@@ -1,0 +1,34 @@
+---
+import SectionTitle from "@/components/sections/SectionTitle.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { PROJECTS_ITEMS } from "./data";
+import ProjectsItem from "./ProjectsItem.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.Projects);
+---
+
+<main class="page-container">
+  <SectionTitle title={t("title")} description={t("content")} />
+
+  <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-[1440px]">
+    {
+      Object.entries(PROJECTS_ITEMS).map(([key, { image, href, githubHref, tags }]) => (
+        <div>
+          <ProjectsItem
+            image={image}
+            title={t(`${key}.title`)}
+            description={t(`${key}.description`)}
+            tags={[...t.numberedKeys(key, "tag_").map((tagKey) => t(`${key}.${tagKey}`)), ...tags]}
+            href={href}
+            githubHref={githubHref}
+          />
+        </div>
+      ))
+    }
+  </section>
+</main>

@@ -1,0 +1,63 @@
+---
+import AppImage from "@/components/ui/AppImage.astro";
+import Card from "@/components/ui/Card.astro";
+import CardTitle from "@/components/ui/CardTitle.astro";
+import Separator from "@/components/ui/Separator.astro";
+import SectionTitle from "@/components/sections/SectionTitle.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { cn } from "@/lib/utils";
+import { HOME_SKILLS_CARDS } from "./data";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, `${GlobalMessageKeys.HomePage}.Skills`);
+---
+
+<div class="theme-background">
+  <main class="page-container">
+    <SectionTitle title={t("title")} description={t("content")} />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        Object.entries(HOME_SKILLS_CARDS).map(([key, { icon, items }]) => (
+          <div>
+            <Card class="px-5 max-w-[400px] h-full gap-4">
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-center min-w-12 min-h-12 rounded-full theme-background w-fit">
+                  <AppImage src={icon} alt="" class="min-w-8 min-h-8 dark:invert" />
+                </div>
+                <CardTitle>
+                  <h3 class="font-bold text-lg">{t(`${key}.title`)}</h3>
+                </CardTitle>
+              </div>
+
+              <div class="flex flex-col gap-6 justify-between h-full">
+                <p>{t(`${key}.content`)}</p>
+                <div class="flex flex-col gap-4">
+                  <Separator />
+                  <div class="flex gap-4 flex-wrap">
+                    {items.map((skill) => (
+                      <div class="flex gap-2">
+                        <AppImage
+                          src={skill.icon}
+                          alt={skill.title}
+                          width={20}
+                          height={20}
+                          class={cn({ "dark:invert": skill.invert })}
+                        />
+                        <p class="text-sm text-secondary">{skill.title}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</div>

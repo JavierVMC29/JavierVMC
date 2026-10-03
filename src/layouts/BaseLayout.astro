@@ -1,0 +1,118 @@
+---
+import "@/styles/global.css";
+import Footer from "@/components/sections/Footer.astro";
+import Header from "@/components/sections/header/Header.astro";
+import MobileMenu from "@/components/sections/header/MobileMenu.astro";
+import { DEFAULT_LOCALE, LOCALES, localizePath, type Locale } from "@/i18n";
+import { formatMetadataDescription, formatTitle } from "@/lib/metadata";
+
+interface Props {
+  locale: Locale;
+  /** Route path without the locale prefix, e.g. "/" or "/about". */
+  path: string;
+  /** Page title; omitted on the home page, which only shows the site name. */
+  title?: string;
+  description: string;
+}
+
+const { locale, path, title, description } = Astro.props;
+
+const site = Astro.site!;
+const pageTitle = formatTitle(title);
+const socialTitle = title ?? pageTitle;
+const metaDescription = formatMetadataDescription(description);
+const canonicalUrl = new URL(localizePath(locale, path), site).href;
+const ogImage = new URL("/assets/metadata/opengraph.jpg", site).href;
+const GTM_ID = "GTM-K7N23CMV";
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    {LOCALES.map((alt) => <link rel="alternate" hreflang={alt} href={new URL(localizePath(alt, path), site).href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(localizePath(DEFAULT_LOCALE, path), site).href} />
+    <link rel="icon" href="/assets/metadata/favicon.ico" sizes="any" />
+    <link rel="preload" href="/fonts/brand/SupremeLLTT-Book.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1298" />
+    <meta property="og:image:height" content="649" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content={site.hostname} />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Apply the saved/system theme before first paint to avoid a flash (see src/lib/theme.ts). -->
+    <script is:inline>
+      (() => {
+        let theme = "system";
+        try {
+          theme = localStorage.getItem("theme") || "system";
+        } catch {}
+        const resolved =
+          theme === "light" || theme === "dark"
+            ? theme
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        const root = document.documentElement;
+        root.classList.add(resolved);
+        root.style.colorScheme = resolved;
+      })();
+    </script>
+    <!-- Remember the visitor's language for the locale-less redirects (src/pages/[...slug].astro). -->
+    <script is:inline define:vars={{ locale }}>
+      try {
+        localStorage.setItem("locale", locale);
+      } catch {}
+    </script>
+
+    <script
+      is:inline
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1461039834739633"
+      crossorigin="anonymous"></script>
+  </head>
+  <body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <Header locale={locale} path={path} />
+    <MobileMenu locale={locale} />
+    <div class="max-w-[1920px] mx-auto"><slot /></div>
+    <Footer locale={locale} />
+
+    <!-- Google Tag Manager -->
+    <script is:inline define:vars={{ GTM_ID }}>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", GTM_ID);
+    </script>
+    <!-- End Google Tag Manager -->
+  </body>
+</html>

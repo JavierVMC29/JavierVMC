@@ -1,0 +1,15 @@
+---
+import AboutPage from "@/components/pages/about/AboutPage.astro";
+import { GlobalMessageKeys, getLocaleStaticPaths, getTranslations, type Locale } from "@/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Paths } from "@/lib/paths";
+
+export const getStaticPaths = getLocaleStaticPaths;
+
+const locale = Astro.params.locale as Locale;
+const t = getTranslations(locale, GlobalMessageKeys.About);
+---
+
+<BaseLayout locale={locale} path={Paths.About} title={t("title")} description={t("content")}>
+  <AboutPage locale={locale} />
+</BaseLayout>

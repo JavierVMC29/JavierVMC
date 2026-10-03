@@ -1,0 +1,27 @@
+---
+import AppImage from "@/components/ui/AppImage.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { SOCIAL_MEDIA, SOCIAL_MEDIA_KEYS } from "@/lib/constants/socialMedia";
+
+interface Props {
+  locale: Locale;
+  iconClass: string;
+}
+
+const { locale, iconClass } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.SocialMedia);
+---
+
+<div class="flex justify-center gap-8">
+  {
+    Object.values(SOCIAL_MEDIA).map(({ name, image, hasLocale, href }) => (
+      <a
+        href={hasLocale ? t(`${SOCIAL_MEDIA_KEYS[name as keyof typeof SOCIAL_MEDIA_KEYS]}.href`) : href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <AppImage src={image} alt={name} width={64} class={iconClass} />
+      </a>
+    ))
+  }
+</div>

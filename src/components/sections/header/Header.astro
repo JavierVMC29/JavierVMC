@@ -1,0 +1,61 @@
+---
+import AppImage from "@/components/ui/AppImage.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { ICONS } from "@/lib/constants/icons";
+import HeaderProfile from "./HeaderProfile.astro";
+import LocaleSwitch from "./LocaleSwitch.astro";
+import { HEADER_MENU_ITEMS } from "./menuItems";
+import ThemeSwitch from "./ThemeSwitch.astro";
+
+interface Props {
+  locale: Locale;
+  /** Route path without the locale prefix, used to build the language switch links. */
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.HeaderItems);
+---
+
+<header
+  class="border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+  <div
+    class="flex justify-between items-center tracking-wider md:tracking-widest font-brand-book px-4 lg:px-8 py-4 max-w-[1920px] mx-auto"
+  >
+    <HeaderProfile locale={locale} />
+    <div class="order-1 md:order-2">
+      {/* Mobile: opens the side sheet rendered by MobileMenu.astro */}
+      <button
+        type="button"
+        class="flex md:hidden"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-mobile-menu-open
+      >
+        <AppImage src={ICONS.hamburgerMenu} alt="Abrir Menu" class="dark:invert hover:cursor-pointer" />
+      </button>
+
+      {/* Desktop */}
+      <nav class="hidden md:flex justify-center items-center">
+        {
+          HEADER_MENU_ITEMS.map((item) => (
+            <div class="px-2 lg:px-6 transition-all">
+              <a
+                href={t(`${item}.path`)}
+                class="text-sm xl:text-base duration-100 ease-in hover:border-b-brand-primary hover:dark:border-b-white hover:border-b-2 pb-1"
+              >
+                {t(`${item}.name`)}
+              </a>
+            </div>
+          ))
+        }
+      </nav>
+    </div>
+    <div class="flex items-center order-2 md:order-3">
+      <LocaleSwitch locale={locale} path={path} />
+      <ThemeSwitch />
+    </div>
+  </div>
+</header>

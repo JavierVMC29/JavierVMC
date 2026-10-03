@@ -1,0 +1,117 @@
+---
+import { X } from "@lucide/astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import Separator from "@/components/ui/Separator.astro";
+import SocialLinks from "@/components/sections/SocialLinks.astro";
+import HeaderProfile from "./HeaderProfile.astro";
+import { HEADER_MENU_ITEMS } from "./menuItems";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.HeaderItems);
+---
+
+<!--
+  Side sheet opened by the hamburger button in Header.astro. It lives outside <header> because the
+  header's backdrop-filter would otherwise become the containing block of these fixed elements.
+-->
+<div id="mobile-menu" hidden data-mobile-menu>
+  <div
+    data-state="closed"
+    data-mobile-menu-overlay
+    class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50"
+  >
+  </div>
+  <div
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mobile-menu-title"
+    data-state="closed"
+    data-mobile-menu-content
+    class="bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm"
+  >
+    <h2 id="mobile-menu-title" class="text-foreground font-semibold sr-only">menu</h2>
+    <div class="flex flex-col items-center justify-between h-full py-16" data-mobile-menu-close>
+      <div class="flex flex-col w-full h-full justify-center items-center gap-20">
+        <HeaderProfile locale={locale} hasOrder={false} />
+        <div class="flex flex-col items-center gap-12">
+          {
+            HEADER_MENU_ITEMS.map((item) => (
+              <div class="px-4 lg:px-8 transition-all items-center">
+                <a
+                  href={t(`${item}.path`)}
+                  class="text-xl duration-100 ease-in hover:border-b-brand-primary hover:dark:border-b-white hover:border-b-2 pb-1"
+                >
+                  {t(`${item}.name`)}
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="flex flex-col gap-8 w-full px-8">
+        <Separator />
+        <SocialLinks locale={locale} iconClass="dark:invert w-8 h-8" />
+      </div>
+    </div>
+    <button
+      type="button"
+      data-mobile-menu-close
+      class="ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
+    >
+      <X class="size-4" />
+      <span class="sr-only">Close</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const triggers = document.querySelectorAll<HTMLButtonElement>("[data-mobile-menu-open]");
+
+  if (menu) {
+    const overlay = menu.querySelector<HTMLElement>("[data-mobile-menu-overlay]")!;
+    const content = menu.querySelector<HTMLElement>("[data-mobile-menu-content]")!;
+    let lastTrigger: HTMLElement | null = null;
+
+    const setState = (state: "open" | "closed") => {
+      overlay.dataset.state = state;
+      content.dataset.state = state;
+      triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", String(state === "open")));
+    };
+
+    const open = (trigger: HTMLElement) => {
+      lastTrigger = trigger;
+      menu.hidden = false;
+      setState("open");
+      document.body.style.overflow = "hidden";
+      content.focus({ preventScroll: true });
+    };
+
+    const close = () => {
+      if (content.dataset.state !== "open") return;
+      setState("closed");
+      document.body.style.overflow = "";
+      Promise.allSettled(content.getAnimations().map((animation) => animation.finished)).then(() => {
+        if (content.dataset.state === "closed") menu.hidden = true;
+      });
+      lastTrigger?.focus({ preventScroll: true });
+    };
+
+    content.tabIndex = -1;
+    triggers.forEach((trigger) => trigger.addEventListener("click", () => open(trigger)));
+    overlay.addEventListener("click", close);
+    menu.querySelectorAll("[data-mobile-menu-close]").forEach((el) => el.addEventListener("click", close));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+
+    // Close if the viewport grows past the mobile breakpoint while open.
+    window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
+      if (event.matches) close();
+    });
+  }
+</script>

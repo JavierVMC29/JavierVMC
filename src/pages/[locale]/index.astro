@@ -1,0 +1,23 @@
+---
+import ContactPage from "@/components/pages/contact/ContactPage.astro";
+import Hero from "@/components/pages/home/Hero.astro";
+import Skills from "@/components/pages/home/Skills.astro";
+import ProjectsPage from "@/components/pages/projects/ProjectsPage.astro";
+import { GlobalMessageKeys, getLocaleStaticPaths, getTranslations, type Locale } from "@/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Paths } from "@/lib/paths";
+
+export const getStaticPaths = getLocaleStaticPaths;
+
+const locale = Astro.params.locale as Locale;
+const t = getTranslations(locale, GlobalMessageKeys.HomePage);
+---
+
+<BaseLayout locale={locale} path={Paths.Home} description={t("Hero.content")}>
+  <div class="flex flex-col">
+    <Hero locale={locale} />
+    <Skills locale={locale} />
+    <ProjectsPage locale={locale} />
+    <ContactPage locale={locale} class="theme-background !h-auto" />
+  </div>
+</BaseLayout>

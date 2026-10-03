@@ -1,0 +1,42 @@
+---
+// Locale-less URLs ("/", "/about", ...) redirect to their localized version, like next-intl's middleware did:
+// the last visited locale wins, then the browser languages, then the default locale.
+import { DEFAULT_LOCALE, LOCALES, localizePath } from "@/i18n";
+import { Paths } from "@/lib/paths";
+
+export function getStaticPaths() {
+  return Object.values(Paths).map((path) => ({
+    params: { slug: path === Paths.Home ? undefined : path.slice(1) },
+    props: { path },
+  }));
+}
+
+const { path } = Astro.props;
+const fallbackUrl = localizePath(DEFAULT_LOCALE, path);
+---
+
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Javier Vega Molina</title>
+    <link rel="canonical" href={new URL(fallbackUrl, Astro.site).href} />
+    <script is:inline define:vars={{ path, locales: LOCALES, defaultLocale: DEFAULT_LOCALE }}>
+      let locale;
+      try {
+        locale = localStorage.getItem("locale");
+      } catch {}
+      if (!locales.includes(locale)) {
+        const preferred = (navigator.languages || [navigator.language]).map((lang) => lang.slice(0, 2).toLowerCase());
+        locale = preferred.find((lang) => locales.includes(lang)) || defaultLocale;
+      }
+      location.replace((path === "/" ? "/" + locale : "/" + locale + path) + location.search + location.hash);
+    </script>
+    <noscript><meta http-equiv="refresh" content={`0;url=${fallbackUrl}`} /></noscript>
+  </head>
+  <body>
+    <a href={fallbackUrl}>{new URL(fallbackUrl, Astro.site).href}</a>
+  </body>
+</html>

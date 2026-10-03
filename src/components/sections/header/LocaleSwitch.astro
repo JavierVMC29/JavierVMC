@@ -1,0 +1,136 @@
+---
+import { Check, Languages } from "@lucide/astro";
+import { GlobalMessageKeys, LOCALES, LOCALE_NAMES, getTranslations, localizePath, type Locale } from "@/i18n";
+import { buttonVariants } from "@/lib/ui";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  locale: Locale;
+  /** Route path without the locale prefix. */
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.Languages);
+---
+
+<div class="relative" data-locale-switch>
+  <button
+    type="button"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls="locale-menu"
+    aria-label={t("name")}
+    data-locale-trigger
+    class={cn(buttonVariants({ variant: "ghost" }))}
+  >
+    <Languages />
+  </button>
+
+  <!-- Positioned wrapper (Radix-style) so the content's enter/exit animation can use `transform` freely -->
+  <div class="absolute top-full left-1/2 z-50 mt-1 -translate-x-1/2" data-locale-positioner>
+    <div
+      id="locale-menu"
+      role="menu"
+      hidden
+      data-state="closed"
+      data-side="bottom"
+      data-locale-content
+      class="bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 z-50 min-w-[8rem] origin-top overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md w-36 font-sans tracking-normal"
+    >
+      <div class="px-2 py-1.5 text-sm font-medium">{t("name")}</div>
+      <div role="separator" class="bg-border -mx-1 my-1 h-px"></div>
+      {
+        LOCALES.map((item) => (
+          <a
+            href={localizePath(item, path)}
+            hreflang={item}
+            role="menuitemcheckbox"
+            aria-checked={item === locale ? "true" : "false"}
+            tabindex="-1"
+            data-locale-item
+            class="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          >
+            <span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+              {item === locale && <Check class="size-4" />}
+            </span>
+            {LOCALE_NAMES[item]}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-locale-switch]").forEach((root) => {
+    const trigger = root.querySelector<HTMLButtonElement>("[data-locale-trigger]")!;
+    const positioner = root.querySelector<HTMLElement>("[data-locale-positioner]")!;
+    const content = root.querySelector<HTMLElement>("[data-locale-content]")!;
+    const items = [...content.querySelectorAll<HTMLAnchorElement>("[data-locale-item]")];
+
+    const isOpen = () => content.dataset.state === "open";
+
+    // Keep the menu inside the viewport (Radix collision handling).
+    const reposition = () => {
+      positioner.style.marginLeft = "";
+      const rect = content.getBoundingClientRect();
+      const overflowRight = rect.right - document.documentElement.clientWidth;
+      if (overflowRight > 0) positioner.style.marginLeft = `${-overflowRight}px`;
+      else if (rect.left < 0) positioner.style.marginLeft = `${-rect.left}px`;
+    };
+
+    const open = (focusFirst: boolean) => {
+      content.hidden = false;
+      content.dataset.state = "open";
+      trigger.setAttribute("aria-expanded", "true");
+      reposition();
+      if (focusFirst) items[0]?.focus();
+    };
+
+    const close = (restoreFocus = false) => {
+      if (!isOpen()) return;
+      content.dataset.state = "closed";
+      trigger.setAttribute("aria-expanded", "false");
+      Promise.allSettled(content.getAnimations().map((animation) => animation.finished)).then(() => {
+        if (!isOpen()) content.hidden = true;
+      });
+      if (restoreFocus) trigger.focus();
+    };
+
+    trigger.addEventListener("click", (event) => {
+      if (isOpen()) close();
+      else open(event.detail === 0);
+    });
+
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" && !isOpen()) {
+        event.preventDefault();
+        open(true);
+      }
+    });
+
+    content.addEventListener("keydown", (event) => {
+      const index = items.indexOf(document.activeElement as HTMLAnchorElement);
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        const step = event.key === "ArrowDown" ? 1 : -1;
+        items[(index + step + items.length) % items.length]?.focus();
+      } else if (event.key === "Tab") {
+        close();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isOpen()) close(true);
+    });
+
+    items.forEach((item) => item.addEventListener("pointermove", () => item.focus()));
+
+    document.addEventListener("pointerdown", (event) => {
+      if (isOpen() && !root.contains(event.target as Node)) close();
+    });
+
+    window.addEventListener("resize", () => isOpen() && reposition());
+  });
+</script>

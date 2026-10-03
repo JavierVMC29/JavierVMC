@@ -1,0 +1,127 @@
+---
+import AppImage from "@/components/ui/AppImage.astro";
+import Card from "@/components/ui/Card.astro";
+import Separator from "@/components/ui/Separator.astro";
+import SectionTitle from "@/components/sections/SectionTitle.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import { ICONS } from "@/lib/constants/icons";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.Experience);
+
+/** Values of the `Experiences.Experience_N.icon` messages. */
+const TIMELINE_ICONS = {
+  Work: ICONS.briefcase,
+  University: ICONS.university,
+  Course: ICONS.book,
+};
+
+const experiences = t.numberedKeys("", "Experience_").map((key, index) => {
+  const icon = t(`${key}.icon`);
+  return {
+    date: t(`${key}.date`),
+    iconName: icon,
+    icon: TIMELINE_ICONS[icon as keyof typeof TIMELINE_ICONS],
+    title: t(`${key}.title`),
+    subtitle: t(`${key}.subtitle`),
+    content: t.numberedKeys(key, "content_").map((contentKey) => t(`${key}.${contentKey}`)),
+    // Messages are part of this repo, so their HTML is trusted.
+    htmlContent: t(`${key}.html_content`),
+    contentOrder: index % 2 === 0 ? "right" : "left",
+  };
+});
+---
+
+<main class="page-container">
+  <SectionTitle title={t("title")} description={t("content")} />
+
+  <div class="flex flex-col gap-8">
+    {
+      experiences.map(({ date, iconName, icon, title, subtitle, content, htmlContent, contentOrder }) => (
+        <div>
+          {/* Desktop (>= 768px): alternating timeline */}
+          <div class="hidden md:flex w-full max-w-6xl gap-4">
+            <div
+              class={cn("flex-1 mt-3", {
+                "order-3 text-left": contentOrder === "left",
+                "order-1 text-right": contentOrder === "right",
+              })}
+            >
+              <p class="font-semibold">{date}</p>
+            </div>
+
+            <div class="order-2 flex flex-col items-center gap-8">
+              <div class="flex items-center justify-center min-w-12 min-h-12 rounded-full theme-background">
+                <AppImage src={icon} alt={iconName} class="min-w-8 min-h-8 dark:invert" />
+              </div>
+
+              <hr class="w-1 h-full rotate-180 theme-background" />
+            </div>
+
+            <Card
+              class={cn("flex-1", {
+                "order-1 text-right": contentOrder === "left",
+                "order-3 text-left": contentOrder === "right",
+              })}
+            >
+              <div class="px-8 flex flex-col gap-4">
+                <div class="flex flex-col gap-2">
+                  <h3 class="font-bold text-xl">{title}</h3>
+                  <p class="font-semibold text-lg">{subtitle}</p>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                  {content.map((paragraph) => (
+                    <p class="text-secondary">{paragraph}</p>
+                  ))}
+                </div>
+
+                {htmlContent && (
+                  <div
+                    class={cn("flex gap-1 text-secondary", {
+                      "justify-end": contentOrder === "left",
+                      "justify-start": contentOrder === "right",
+                    })}
+                    set:html={htmlContent}
+                  />
+                )}
+              </div>
+            </Card>
+          </div>
+
+          {/* Mobile (< 768px): stacked cards */}
+          <Card class="px-6 md:hidden">
+            <div class="flex items-center justify-start gap-4">
+              <div class="flex items-center justify-center min-w-12 min-h-12 rounded-full bg-slate-300">
+                <AppImage src={icon} alt={iconName} class="min-w-8 min-h-8" />
+              </div>
+              <p class="font-semibold">{date}</p>
+            </div>
+
+            <Separator />
+
+            <div class="flex flex-col gap-4">
+              <div class="flex flex-col gap-2">
+                <h3 class="font-bold text-xl">{title}</h3>
+                <p class="font-semibold text-lg">{subtitle}</p>
+              </div>
+
+              <div class="flex flex-col gap-4">
+                {content.map((paragraph) => (
+                  <p class="text-secondary">{paragraph}</p>
+                ))}
+              </div>
+
+              {htmlContent && <div class="flex gap-1 text-secondary" set:html={htmlContent} />}
+            </div>
+          </Card>
+        </div>
+      ))
+    }
+  </div>
+</main>

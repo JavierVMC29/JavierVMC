@@ -1,0 +1,24 @@
+---
+import Separator from "@/components/ui/Separator.astro";
+import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
+import SocialLinks from "./SocialLinks.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale, GlobalMessageKeys.Footer);
+---
+
+<footer class="my-12 mx-6 sm:m-12 lg:mx-24 lg:mt-20">
+  <Separator />
+  <div class="flex w-full pt-4">
+    <div class="w-full flex flex-col justify-between items-center gap-4 sm:flex-row">
+      <p class="text-sm text-center text-secondary">
+        © {t("copyright")}
+      </p>
+      <SocialLinks locale={locale} iconClass="dark:invert w-6 h-6" />
+    </div>
+  </div>
+</footer>
