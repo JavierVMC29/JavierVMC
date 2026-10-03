@@ -1,11 +1,10 @@
 ---
-import AppImage from "@/components/ui/AppImage.astro";
-import Card from "@/components/ui/Card.astro";
-import Separator from "@/components/ui/Separator.astro";
+import { BriefcaseBusiness, Building, House, MapPin, TrendingUp } from "@lucide/astro";
 import SectionTitle from "@/components/sections/SectionTitle.astro";
 import { GlobalMessageKeys, getTranslations, type Locale } from "@/i18n";
-import { ICONS } from "@/lib/constants/icons";
-import { cn } from "@/lib/utils";
+import { formatDuration, formatYearMonth, monthsBetween, type YearMonth } from "@/lib/dates";
+import { EXPERIENCE } from "./data";
+import RoleDetails from "./RoleDetails.astro";
 
 interface Props {
   locale: Locale;
@@ -13,26 +12,40 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale, GlobalMessageKeys.Experience);
+const label = (key: string) => t(`labels.${key}`);
 
-/** Values of the `Experiences.Experience_N.icon` messages. */
-const TIMELINE_ICONS = {
-  Work: ICONS.briefcase,
-  University: ICONS.university,
-  Course: ICONS.book,
-};
+const formatRange = (start: YearMonth, end: YearMonth | null) =>
+  `${formatYearMonth(start, locale)} – ${end ? formatYearMonth(end, locale) : label("present")}`;
+const formatSpan = (start: YearMonth, end: YearMonth | null) => formatDuration(monthsBetween(start, end), locale);
 
-const experiences = t.numberedKeys("", "Experience_").map((key, index) => {
-  const icon = t(`${key}.icon`);
+// Every Experience_N message must be placed on the timeline in data.ts.
+const placed = new Set(EXPERIENCE.flatMap((company) => company.roles.map((role) => role.key)));
+const unplaced = t.numberedKeys("", "Experience_").filter((key) => !placed.has(key));
+if (unplaced.length) {
+  throw new Error(`[experience] Add ${unplaced.join(", ")} to src/components/pages/experience/data.ts`);
+}
+
+const companies = EXPERIENCE.map((company) => {
+  const roles = company.roles.map((role, index) => ({
+    ...role,
+    title: t(`${role.key}.title`),
+    bullets: t.numberedKeys(role.key, "content_").map((key) => t(`${role.key}.${key}`)),
+    range: formatRange(role.start, role.end),
+    duration: formatSpan(role.start, role.end),
+    // Earlier roles at the same company are listed below, so every role but the last is a promotion.
+    promoted: index < company.roles.length - 1,
+  }));
+  const start = company.roles[company.roles.length - 1].start;
+  const end = company.roles[0].end;
+
   return {
-    date: t(`${key}.date`),
-    iconName: icon,
-    icon: TIMELINE_ICONS[icon as keyof typeof TIMELINE_ICONS],
-    title: t(`${key}.title`),
-    subtitle: t(`${key}.subtitle`),
-    content: t.numberedKeys(key, "content_").map((contentKey) => t(`${key}.${contentKey}`)),
-    // Messages are part of this repo, so their HTML is trusted.
-    htmlContent: t(`${key}.html_content`),
-    contentOrder: index % 2 === 0 ? "right" : "left",
+    ...company,
+    name: t(`${company.roles[0].key}.subtitle`),
+    roles,
+    start,
+    current: end === null,
+    range: formatRange(start, end),
+    duration: formatSpan(start, end),
   };
 });
 ---
@@ -40,88 +53,187 @@ const experiences = t.numberedKeys("", "Experience_").map((key, index) => {
 <main class="page-container">
   <SectionTitle title={t("title")} description={t("content")} />
 
-  <div class="flex flex-col gap-8">
-    {
-      experiences.map(({ date, iconName, icon, title, subtitle, content, htmlContent, contentOrder }) => (
-        <div>
-          {/* Desktop (>= 768px): alternating timeline */}
-          <div class="hidden md:flex w-full max-w-6xl gap-4">
-            <div
-              class={cn("flex-1 mt-3", {
-                "order-3 text-left": contentOrder === "left",
-                "order-1 text-right": contentOrder === "right",
-              })}
-            >
-              <p class="font-semibold">{date}</p>
-            </div>
+  <div class="relative w-full max-w-5xl" data-timeline>
+    <!-- Rail: fills with color as the visitor scrolls (see script below) -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-y-0 left-2.5 w-0.5 -translate-x-1/2 overflow-hidden rounded-full bg-border [mask-image:linear-gradient(to_bottom,black_85%,transparent)] md:left-[13.25rem]"
+    >
+      <div
+        data-timeline-progress
+        class="h-full w-full origin-top bg-linear-to-b from-violet-400 to-violet-600"
+        style="transform: scaleY(0)"
+      >
+      </div>
+    </div>
 
-            <div class="order-2 flex flex-col items-center gap-8">
-              <div class="flex items-center justify-center min-w-12 min-h-12 rounded-full theme-background">
-                <AppImage src={icon} alt={iconName} class="min-w-8 min-h-8 dark:invert" />
+    <ol>
+      {
+        companies.map((company) => {
+          const single = company.roles.length === 1;
+          const [mainRole] = company.roles;
+          const liveDuration = company.current ? { "data-live-start": company.start, "data-locale": locale } : {};
+
+          return (
+            <li
+              id={`exp-${company.id}`}
+              class="grid scroll-mt-28 grid-cols-[1.25rem_minmax(0,1fr)] gap-x-3 pb-10 last:pb-0 md:grid-cols-[10rem_2.5rem_minmax(0,1fr)] md:gap-x-8"
+            >
+              {/* Date (desktop): stays in view while the card scrolls */}
+              <div class="hidden md:block">
+                <div class="sticky top-28 pt-4 text-right">
+                  <p class="font-semibold leading-snug">{company.range}</p>
+                  <p class="mt-1 text-sm text-secondary" {...liveDuration}>
+                    {company.duration}
+                  </p>
+                </div>
               </div>
 
-              <hr class="w-1 h-full rotate-180 theme-background" />
-            </div>
-
-            <Card
-              class={cn("flex-1", {
-                "order-1 text-right": contentOrder === "left",
-                "order-3 text-left": contentOrder === "right",
-              })}
-            >
-              <div class="px-8 flex flex-col gap-4">
-                <div class="flex flex-col gap-2">
-                  <h3 class="font-bold text-xl">{title}</h3>
-                  <p class="font-semibold text-lg">{subtitle}</p>
+              {/* Node on the rail */}
+              <div>
+                <div class="sticky top-28 flex justify-center pt-5">
+                  <span
+                    data-timeline-dot
+                    data-current={company.current ? "" : undefined}
+                    class="relative flex size-4 rounded-full border-2 border-border bg-background transition-colors duration-300 data-active:border-violet-500 data-active:bg-violet-500 data-current:border-violet-500 data-current:bg-violet-500"
+                  >
+                    {company.current && (
+                      <span class="absolute inset-0 rounded-full bg-violet-500/60 motion-safe:animate-ping" />
+                    )}
+                  </span>
                 </div>
+              </div>
 
-                <div class="flex flex-col gap-4">
-                  {content.map((paragraph) => (
-                    <p class="text-secondary">{paragraph}</p>
-                  ))}
-                </div>
-
-                {htmlContent && (
+              <article class="rounded-xl border bg-card p-4 text-card-foreground shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-violet-500/40 hover:shadow-md sm:p-6">
+                <header class="flex items-start gap-3 sm:gap-4">
                   <div
-                    class={cn("flex gap-1 text-secondary", {
-                      "justify-end": contentOrder === "left",
-                      "justify-start": contentOrder === "right",
-                    })}
-                    set:html={htmlContent}
-                  />
+                    aria-hidden="true"
+                    class="flex size-10 shrink-0 items-center justify-center rounded-xl sm:size-12 bg-violet-500/10 font-bold text-violet-700 ring-1 ring-violet-500/20 ring-inset dark:text-violet-300"
+                  >
+                    {company.initials}
+                  </div>
+
+                  <div class="flex min-w-0 flex-1 flex-col gap-1">
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <h3 class="text-xl leading-tight font-bold">{single ? mainRole.title : company.name}</h3>
+                      {company.current && (
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-700 ring-1 ring-emerald-500/20 ring-inset dark:text-emerald-400">
+                          <span class="size-1.5 rounded-full bg-emerald-500" />
+                          {label("current")}
+                        </span>
+                      )}
+                    </div>
+                    {single && <p class="text-lg font-semibold">{company.name}</p>}
+
+                    {/* Date (mobile) */}
+                    <p class="text-sm font-medium md:hidden">
+                      {company.range} · <span class="whitespace-nowrap" {...liveDuration}>{company.duration}</span>
+                    </p>
+
+                    <ul class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-secondary">
+                      <li class="inline-flex items-center gap-1.5">
+                        <BriefcaseBusiness class="size-3.5" />
+                        {label(company.employment)}
+                      </li>
+                      {company.workplace && (
+                        <li class="inline-flex items-center gap-1.5">
+                          {company.workplace === "remote" ? <House class="size-3.5" /> : <Building class="size-3.5" />}
+                          {label(company.workplace)}
+                        </li>
+                      )}
+                      {company.location && (
+                        <li class="inline-flex items-center gap-1.5">
+                          <MapPin class="size-3.5" />
+                          {company.location}
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </header>
+
+                {single ? (
+                  <div class="mt-5">
+                    <RoleDetails
+                      bullets={mainRole.bullets}
+                      skills={mainRole.skills}
+                      showMoreLabel={label("showMore")}
+                      showLessLabel={label("showLess")}
+                    />
+                  </div>
+                ) : (
+                  /* Several roles: promotion path on a dashed sub-rail aligned with the monogram */
+                  <ol class="mt-6 ml-5 flex flex-col gap-8 border-l-2 border-dashed border-violet-500/30 pl-4 sm:ml-6 sm:pl-6">
+                    {company.roles.map((role) => (
+                      <li class="relative">
+                        <span
+                          aria-hidden="true"
+                          class="absolute top-1.5 -left-[calc(1rem+1px)] size-3 sm:-left-[calc(1.5rem+1px)] -translate-x-1/2 rounded-full border-2 border-violet-500 bg-card"
+                        />
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                          <h4 class="text-lg leading-tight font-semibold">{role.title}</h4>
+                          {role.promoted && (
+                            <span class="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2.5 py-0.5 text-xs font-medium text-violet-700 ring-1 ring-violet-500/20 ring-inset dark:text-violet-300">
+                              <TrendingUp class="size-3.5" />
+                              {label("promoted")}
+                            </span>
+                          )}
+                        </div>
+                        <p class="mt-1 mb-4 text-sm text-secondary">
+                          {role.range} · <span class="whitespace-nowrap">{role.duration}</span>
+                        </p>
+                        <RoleDetails
+                          bullets={role.bullets}
+                          skills={role.skills}
+                          showMoreLabel={label("showMore")}
+                          showLessLabel={label("showLess")}
+                        />
+                      </li>
+                    ))}
+                  </ol>
                 )}
-              </div>
-            </Card>
-          </div>
-
-          {/* Mobile (< 768px): stacked cards */}
-          <Card class="px-6 md:hidden">
-            <div class="flex items-center justify-start gap-4">
-              <div class="flex items-center justify-center min-w-12 min-h-12 rounded-full bg-slate-300">
-                <AppImage src={icon} alt={iconName} class="min-w-8 min-h-8" />
-              </div>
-              <p class="font-semibold">{date}</p>
-            </div>
-
-            <Separator />
-
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-col gap-2">
-                <h3 class="font-bold text-xl">{title}</h3>
-                <p class="font-semibold text-lg">{subtitle}</p>
-              </div>
-
-              <div class="flex flex-col gap-4">
-                {content.map((paragraph) => (
-                  <p class="text-secondary">{paragraph}</p>
-                ))}
-              </div>
-
-              {htmlContent && <div class="flex gap-1 text-secondary" set:html={htmlContent} />}
-            </div>
-          </Card>
-        </div>
-      ))
-    }
+              </article>
+            </li>
+          );
+        })
+      }
+    </ol>
   </div>
 </main>
+
+<script>
+  import { formatDuration, monthsBetween } from "@/lib/dates";
+
+  // Durations of current roles are computed at build time; refresh them so they never go stale.
+  document.querySelectorAll<HTMLElement>("[data-live-start]").forEach((el) => {
+    el.textContent = formatDuration(monthsBetween(el.dataset.liveStart!), el.dataset.locale as "en" | "es");
+  });
+
+  // Scroll progress: fill the rail up to a reading line and light up the dots already passed.
+  const timeline = document.querySelector<HTMLElement>("[data-timeline]");
+  if (timeline) {
+    const progress = timeline.querySelector<HTMLElement>("[data-timeline-progress]")!;
+    const dots = [...timeline.querySelectorAll<HTMLElement>("[data-timeline-dot]")];
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const atPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      const readingLine = window.innerHeight * 0.4;
+      const rect = timeline.getBoundingClientRect();
+      const ratio = atPageEnd ? 1 : Math.min(1, Math.max(0, (readingLine - rect.top) / rect.height));
+      progress.style.transform = `scaleY(${ratio})`;
+
+      for (const dot of dots) {
+        const box = dot.getBoundingClientRect();
+        dot.toggleAttribute("data-active", atPageEnd || box.top + box.height / 2 <= readingLine);
+      }
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+  }
+</script>

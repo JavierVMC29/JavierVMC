@@ -8,15 +8,17 @@ Personal portfolio site for Javier Vega Molina (javiervmc.com). Astro 7 static s
 
 ## Commands
 
+The package manager is pnpm (`pnpm-lock.yaml`); the site is deployed on Netlify.
+
 ```bash
-npm run dev             # astro dev (http://localhost:4321)
-npm run build           # static build into dist/
-npm run preview         # serve dist/
-npm run check           # astro check (TypeScript + .astro diagnostics)
-npm run generate-fonts  # regenerate src/styles/fonts.css after adding/removing fonts
+pnpm dev             # astro dev (http://localhost:4321)
+pnpm build           # static build into dist/
+pnpm preview         # serve dist/
+pnpm check           # astro check (TypeScript + .astro diagnostics)
+pnpm generate-fonts  # regenerate src/styles/fonts.css after adding/removing fonts
 ```
 
-There is no test suite. `npm run check` reports two harmless hints in `src/pages/[...slug].astro` caused by `define:vars`.
+There is no test suite. `pnpm check` only works with TypeScript 6 (it refuses TypeScript 7). `sharp` must stay a direct dependency: pnpm does not hoist Astro's optional `sharp`, and image optimization fails without it.
 
 ## Architecture
 
@@ -27,7 +29,7 @@ There is no test suite. `npm run check` reports two harmless hints in `src/pages
 
 ### Content model
 Almost all copy lives in `messages/en.json` and `messages/es.json`, which must stay structurally identical. Repeated items use numbered keys and are discovered with `t.numberedKeys(key, prefix)`, so their count is never hardcoded:
-- **Experience**: `Experiences.Experience_N` (`date`, `icon` = `Work` | `University` | `Course`, `title`, `subtitle`, `content_N`, `html_content`). `html_content` is injected with `set:html` (trusted, repo-controlled).
+- **Experience**: translated `title`, `subtitle` (company name) and `content_N` bullets under `Experiences.Experience_N`, plus UI strings under `Experiences.labels`. Order, dates (`YYYY-MM`, `end: null` = current), employment type, workplace, location and tech chips live in `src/components/pages/experience/data.ts`, which groups roles by company (several roles in one company render as a promotion path). The build fails if an `Experience_N` message is not placed in `data.ts`. Durations are computed (`src/lib/dates.ts`), and figures like `50%`/`500+` in bullets are auto-emphasized, so don't put tech lists in parentheses inside bullets — use `skills`.
 - **Projects**: translated `title`, `description`, `tag_N` under `Projects.Project_N`; image, links and untranslated tech tags in `src/components/pages/projects/data.ts` under the same `Project_N` key. Adding a project needs both.
 - **About**: `MainInfo.content_N` and `Concepts.content_N`; skill lists and education keys in `src/components/pages/about/skills.ts`.
 - **Home skills cards**: icons/tech lists in `src/components/pages/home/data.ts`, keyed like `HomePage.Skills.<key>`.
@@ -44,5 +46,6 @@ Navigation paths inside messages are locale-prefixed (`/en/about`), so they diff
 Only small vanilla `<script>`s, no framework runtime:
 - Theme: an inline script in `BaseLayout` applies the stored/system theme before paint; `src/lib/theme.ts` handles the toggle (same `localStorage.theme` contract as next-themes).
 - `LocaleSwitch.astro` (dropdown), `MobileMenu.astro` (side sheet, rendered outside `<header>` because the header's `backdrop-filter` would trap `position: fixed`), and the hero intro animation in `Hero.astro`.
-- Mobile vs desktop variants (header menu, experience timeline) are both rendered and switched with `md:` classes; the breakpoint (768px) matches the old `useIsMobile` hook.
+- `ExperiencePage.astro`: fills the timeline rail and lights up its dots on scroll, and refreshes the duration of the current role so it never goes stale between builds. "Show more" for long bullet lists is a native `<details>` (no JS).
+- The header menu renders both mobile and desktop variants and switches them with `md:` classes (768px breakpoint).
 - `BaseLayout` also loads Google Tag Manager and Google AdSense (`public/ads.txt`). Link prefetch on hover is enabled in `astro.config.mjs`.

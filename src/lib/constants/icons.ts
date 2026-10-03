@@ -13,8 +13,6 @@ const icon = (name: string, width = 24, height = 24): PublicIcon => ({
 
 export const ICONS = {
   asterisk: icon("asterisk"),
-  book: icon("book"),
-  briefcase: icon("briefcase"),
   code: icon("code"),
   externalLink: icon("external-link"),
   flask: icon("flask"),
@@ -24,6 +22,5 @@ export const ICONS = {
   mail: icon("mail"),
   router: icon("router"),
   server: icon("server"),
-  university: icon("university"),
   wrench: icon("wrench"),
 } satisfies Record<string, PublicIcon>;

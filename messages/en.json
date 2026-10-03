@@ -146,75 +146,79 @@
     "title": "Experiences",
     "content": "My professional journey building scalable systems, AI-powered products, and end-to-end web applications.",
 
+    "labels": {
+      "present": "Present",
+      "current": "Current",
+      "promoted": "Promoted",
+      "showMore": "Show {count} more",
+      "showLess": "Show less",
+      "fullTime": "Full-time",
+      "partTime": "Part-time",
+      "contract": "Contract",
+      "internship": "Internship",
+      "onSite": "On-site",
+      "remote": "Remote",
+      "hybrid": "Hybrid"
+    },
+
     "Experience_1": {
-      "date": "September 2024 - Present",
-      "icon": "Work",
-      "title": "Semi-Senior Full-Stack Developer",
-      "subtitle": "Telecu",
-      "content_1": "Led full software development lifecycles from architecture to deployment, including mentoring a junior developer. (Node.js, TypeScript, Docker, PostgreSQL)",
-      "content_2": "Architected and deployed a RAG-based chatbot that automated 30% of client inquiries. (Python, LangChain, FastAPI)",
-      "content_3": "Built AI-powered voice bots and WhatsApp automation, increasing qualified leads by 15%.",
-      "content_4": "Developed AI agents handling 500+ appointment bookings per month, reducing administrative workload by 20 hours/week.",
-      "content_5": "Built a reporting system used by 50+ field technicians, improving daily completion rates by 20%. (React, NestJS, Grafana)",
-      "content_6": "Integrated Paymentz, WHMCS, and Datil into a unified billing system, reducing invoice processing time by 85%.",
-      "content_7": "Designed a fault-tolerant notification system ensuring 100% delivery reliability. (NestJS, RabbitMQ, PostgreSQL)",
-      "html_content": ""
+      "title": "Software Engineer",
+      "subtitle": "Banco Bolivariano",
+      "content_1": "Reduced remittance cancellations by 50% through the implementation of phonetic search with Amazon OpenSearch, improving beneficiary identification across large-scale banking datasets.",
+      "content_2": "Integrated external correspondents through API-based architectures using AWS serverless services, enabling scalable and secure communication between banking systems and external partners.",
+      "content_3": "Migrated the interbank payments integration to support immediate remittance payments through BANRED APIs, implementing key- and credential-based authentication for real-time transaction processing.",
+      "content_4": "Supervised the development of a centralized security module with a fully AWS-based architecture for the bank's internal back-office applications.",
+      "content_5": "Supervised the development of a reconciliation back-office application with a fully AWS-based architecture, supporting operational banking processes.",
+      "content_6": "Developed banking services and integrations using Java, Spring Boot, AWS, REST APIs, DynamoDB, OpenSearch, and cloud-native architectures."
     },
 
     "Experience_2": {
-      "date": "September 2023 - September 2024",
-      "icon": "Work",
-      "title": "Junior Full-Stack Developer",
+      "title": "Semi-Senior Full-Stack Developer",
       "subtitle": "Telecu",
-      "content_1": "Developed backend and frontend features for internal platforms and client-facing applications. (Node.js, TypeScript, React, PostgreSQL)",
-      "content_2": "Implemented REST APIs and microservices, improving system responsiveness and reliability.",
-      "content_3": "Provided production support, resolving critical issues and improving platform stability.",
-      "content_4": "Contributed to integrations with external providers including Paymentz, WHMCS, and Datil.",
-      "html_content": ""
+      "content_1": "Led full software development lifecycles from architecture to deployment, including mentoring a junior developer.",
+      "content_2": "Architected and deployed a RAG-based chatbot that automated 30% of client inquiries.",
+      "content_3": "Built AI-powered voice bots and WhatsApp automation, increasing qualified leads by 15%.",
+      "content_4": "Developed AI agents handling 500+ appointment bookings per month, reducing administrative workload by 20 hours/week.",
+      "content_5": "Built a reporting system used by 50+ field technicians, improving daily completion rates by 20%.",
+      "content_6": "Integrated Paymentz, WHMCS, and Datil into a unified billing system, reducing invoice processing time by 85%.",
+      "content_7": "Designed a fault-tolerant notification system ensuring 100% delivery reliability."
     },
 
     "Experience_3": {
-      "date": "October 2023 - February 2024",
-      "icon": "Work",
-      "title": "Software Engineer",
-      "subtitle": "Prefectura del Guayas",
-      "content_1": "Developed a tourism mobile application for the Guayas province using a modular microservices backend. (React Native, NestJS, Azure)",
-      "content_2": "Improved tourism engagement — 90% of users reported feeling more motivated to visit after using the app.",
-      "content_3": "Tech stack: React Native, NestJS, Microservices, Azure App Services",
-      "html_content": ""
+      "title": "Junior Full-Stack Developer",
+      "subtitle": "Telecu",
+      "content_1": "Developed backend and frontend features for internal platforms and client-facing applications.",
+      "content_2": "Implemented REST APIs and microservices, improving system responsiveness and reliability.",
+      "content_3": "Provided production support, resolving critical issues and improving platform stability.",
+      "content_4": "Contributed to integrations with external providers including Paymentz, WHMCS, and Datil."
     },
 
     "Experience_4": {
-      "date": "February 2023 - August 2023",
-      "icon": "Work",
-      "title": "Full-Stack Developer",
-      "subtitle": "Sipecom S.A.",
-      "content_1": "Upgraded legacy PHP 5 systems to PHP 8.2, resolving security vulnerabilities and retaining a major client responsible for 60% of revenue.",
-      "content_2": "Migrated on-premise applications to Azure Cloud, reducing infrastructure and maintenance costs by 70%. (Azure, Docker, Nginx)",
-      "content_3": "Tech stack: PHP, MySQL, Azure, Docker, Nginx",
-      "html_content": ""
+      "title": "Software Engineer",
+      "subtitle": "Prefectura del Guayas",
+      "content_1": "Developed a tourism mobile application for the Guayas province using a modular microservices backend.",
+      "content_2": "Improved tourism engagement — 90% of users reported feeling more motivated to visit after using the app."
     },
 
     "Experience_5": {
-      "date": "September 2022 - December 2022",
-      "icon": "Work",
-      "title": "Teaching Assistant — Programming Languages",
-      "subtitle": "ESPOL Polytechnic University",
-      "content_1": "Taught programming languages including PHP, Ruby, Dart, Python, JavaScript, and Clojure to students enrolled in the Programming Languages course.",
-      "content_2": "Assisted students with assignments, debugging, functional programming concepts, and project development.",
-      "content_3": "Skills applied: Python, Ruby, Dart, JavaScript, PHP, Clojure, Functional Programming",
-      "html_content": ""
+      "title": "Full-Stack Developer",
+      "subtitle": "Sipecom S.A.",
+      "content_1": "Upgraded legacy PHP 5 systems to PHP 8.2, resolving security vulnerabilities and retaining a major client responsible for 60% of revenue.",
+      "content_2": "Migrated on-premise applications to Azure Cloud, reducing infrastructure and maintenance costs by 70%."
     },
 
     "Experience_6": {
-      "date": "May 2020 - September 2020",
-      "icon": "Work",
+      "title": "Teaching Assistant — Programming Languages",
+      "subtitle": "ESPOL Polytechnic University",
+      "content_1": "Taught programming languages including PHP, Ruby, Dart, Python, JavaScript, and Clojure to students enrolled in the Programming Languages course.",
+      "content_2": "Assisted students with assignments, debugging, functional programming concepts, and project development."
+    },
+
+    "Experience_7": {
       "title": "Frontend Web Developer (Internship)",
       "subtitle": "ZEDE del Litoral",
       "content_1": "Redesigned the company’s main website and implemented new features including a contact form and an image carousel.",
-      "content_2": "Improved user experience and increased inbound client inquiries through a more modern, responsive interface.",
-      "content_3": "Tech stack: HTML, CSS, JavaScript",
-      "html_content": ""
+      "content_2": "Improved user experience and increased inbound client inquiries through a more modern, responsive interface."
     }
   },
   "Projects": {
