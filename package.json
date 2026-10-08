@@ -27,7 +27,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "typescript": "7.0.2"
+    "@resvg/resvg-js": "2.6.2",
+    "satori": "0.35.1",
+    "typescript": "7.0.2",
+    "wawoff2": "2.0.1"
   },
   "allowScripts": {
     "esbuild": true,

@@ -105,6 +105,7 @@
       "locationValue": "Guayaquil, Ecuador",
       "experience": "Experiencia profesional",
       "experienceValue": "{count}+ años",
+      "experienceLong": "{count}+ años de experiencia",
       "focus": "Enfoque",
       "focusValue": "Backend · Cloud · IA",
       "education": "Formación",

@@ -20,9 +20,9 @@ import {
 import SectionTitle from "@/components/sections/SectionTitle.astro";
 import Chips from "@/components/ui/Chips.astro";
 import HighlightedText from "@/components/ui/HighlightedText.astro";
-import { EXPERIENCE } from "@/components/pages/experience/data";
+import { currentRoleKey, professionalYears } from "@/components/pages/experience/data";
 import { GlobalMessageKeys, getTranslations, localizePath, type Locale } from "@/i18n";
-import { formatYearMonth, monthsBetween } from "@/lib/dates";
+import { formatYearMonth } from "@/lib/dates";
 import { Paths } from "@/lib/paths";
 import { buttonVariants } from "@/lib/ui";
 import { cn } from "@/lib/utils";
@@ -39,24 +39,20 @@ const tExperience = getTranslations(locale, GlobalMessageKeys.Experience);
 const bio = t.numberedKeys("MainInfo", "content_").map((key) => t(`MainInfo.${key}`));
 
 // "At a glance" facts derived from the experience timeline, so they stay in sync with it.
-const currentCompany = EXPERIENCE.find((company) => company.roles[0].end === null);
-const currentRole = currentCompany
+const roleKey = currentRoleKey();
+const currentRole = roleKey
   ? t("Facts.roleValue")
-      .replace("{title}", tExperience(`${currentCompany.roles[0].key}.title`))
-      .replace("{company}", tExperience(`${currentCompany.roles[0].key}.subtitle`))
+      .replace("{title}", tExperience(`${roleKey}.title`))
+      .replace("{company}", tExperience(`${roleKey}.subtitle`))
   : null;
-// Professional experience counts full-time and contract roles (not internships or part-time teaching).
-const firstProfessionalStart = EXPERIENCE.filter((company) => ["fullTime", "contract"].includes(company.employment))
-  .flatMap((company) => company.roles.map((role) => role.start))
-  .sort()[0];
-const professionalYears = Math.floor(monthsBetween(firstProfessionalStart) / 12);
+const years = professionalYears();
 
 const facts = [
   currentRole && { icon: BriefcaseBusiness, label: t("Facts.role"), value: currentRole },
   {
     icon: TrendingUp,
     label: t("Facts.experience"),
-    value: t("Facts.experienceValue").replace("{count}", String(professionalYears)),
+    value: t("Facts.experienceValue").replace("{count}", String(years)),
   },
   { icon: Target, label: t("Facts.focus"), value: t("Facts.focusValue") },
   { icon: GraduationCap, label: t("Facts.education"), value: t("Facts.educationValue") },

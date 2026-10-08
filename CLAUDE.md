@@ -40,6 +40,7 @@ Navigation paths inside messages are locale-prefixed (`/en/about`), so they diff
 - shadcn/ui is no longer a dependency: the class recipes of the components the site used (button, card, separator) live in `src/lib/ui.ts` and `src/components/ui/`. `cn()` (clsx + tailwind-merge) runs at build time, so class overrides behave exactly like before.
 - Theme tokens are CSS variables in `src/styles/global.css` (Tailwind v4 `@theme inline`, class-based `dark` variant). Shared classes `page-container` and `theme-background` are defined there; hero animation classes in `src/styles/animation.css`.
 - Brand fonts: `public/fonts/<folder>/*.woff2` → `npm run generate-fonts` → committed `src/styles/fonts.css` with `@font-face` rules and `.font-brand-<variant>` classes (e.g. `font-brand-book`).
+- Social cards: `src/pages/og/[locale]/[page].png.ts` renders one 1200×630 PNG per page and locale at build time with Satori + resvg (`src/lib/og-card.ts`, brand font converted from WOFF2 with `wawoff2`). `SocialMeta.astro` emits the OG/Twitter tags, also on the locale-less redirect pages, since crawlers don't run their JS. Keep satori at 0.35.x: 0.36.0's ESM build references `__dirname` and breaks the build.
 - Images: raster images live in `src/assets/images` and go through `astro:assets` (WebP, responsive `srcset`); SVG icons stay in `public/assets/icons` and are referenced through `src/lib/constants/icons.ts`. `AppImage.astro` renders either kind.
 
 ### Client-side JavaScript

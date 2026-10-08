@@ -1,0 +1,33 @@
+---
+// Open Graph / Twitter tags for link previews. Crawlers don't run JavaScript, so every page that can be shared
+// (including the locale-less redirects) must render them in its static HTML.
+interface Props {
+  url: string;
+  title: string;
+  description: string;
+  /** Site-relative path of the page's social card (see `ogImagePath`). */
+  image: string;
+}
+
+const { url, title, description, image } = Astro.props;
+
+const site = Astro.site!;
+const ogImage = new URL(image, site).href;
+---
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content={site.hostname} />
+<meta property="twitter:url" content={url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={title} />

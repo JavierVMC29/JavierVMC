@@ -1,7 +1,9 @@
 ---
 // Locale-less URLs ("/", "/about", ...) redirect to their localized version, like next-intl's middleware did:
 // the last visited locale wins, then the browser languages, then the default locale.
+import SocialMeta from "@/components/SocialMeta.astro";
 import { DEFAULT_LOCALE, LOCALES, localizePath } from "@/i18n";
+import { SITE_NAME, formatMetadataDescription, getPageMetadata, ogImagePath } from "@/lib/metadata";
 import { Paths } from "@/lib/paths";
 
 export function getStaticPaths() {
@@ -13,6 +15,9 @@ export function getStaticPaths() {
 
 const { path } = Astro.props;
 const fallbackUrl = localizePath(DEFAULT_LOCALE, path);
+const canonicalUrl = new URL(fallbackUrl, Astro.site).href;
+// Link previews of the shared, locale-less URLs come from here: crawlers never follow the JS redirect.
+const { title, description } = getPageMetadata(DEFAULT_LOCALE, path);
 ---
 
 <!doctype html>
@@ -22,7 +27,13 @@ const fallbackUrl = localizePath(DEFAULT_LOCALE, path);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>Javier Vega Molina</title>
-    <link rel="canonical" href={new URL(fallbackUrl, Astro.site).href} />
+    <link rel="canonical" href={canonicalUrl} />
+    <SocialMeta
+      url={canonicalUrl}
+      title={title ?? SITE_NAME}
+      description={formatMetadataDescription(description)}
+      image={ogImagePath(DEFAULT_LOCALE, path)}
+    />
     <script is:inline define:vars={{ path, locales: LOCALES, defaultLocale: DEFAULT_LOCALE }}>
       let locale;
       try {
@@ -37,6 +48,6 @@ const fallbackUrl = localizePath(DEFAULT_LOCALE, path);
     <noscript><meta http-equiv="refresh" content={`0;url=${fallbackUrl}`} /></noscript>
   </head>
   <body>
-    <a href={fallbackUrl}>{new URL(fallbackUrl, Astro.site).href}</a>
+    <a href={fallbackUrl}>{canonicalUrl}</a>
   </body>
 </html>

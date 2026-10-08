@@ -1,4 +1,4 @@
-import type { YearMonth } from "@/lib/dates";
+import { monthsBetween, type YearMonth } from "@/lib/dates";
 
 export type EmploymentType = "fullTime" | "partTime" | "contract" | "internship";
 export type Workplace = "onSite" | "remote" | "hybrid";
@@ -122,3 +122,16 @@ export const EXPERIENCE: Company[] = [
     ],
   },
 ];
+
+/** Message key of the role held today, or `null` between jobs. */
+export function currentRoleKey(): string | null {
+  return EXPERIENCE.find((company) => company.roles[0].end === null)?.roles[0].key ?? null;
+}
+
+/** Whole years since the first full-time or contract role (not internships or part-time teaching). */
+export function professionalYears(): number {
+  const firstStart = EXPERIENCE.filter((company) => ["fullTime", "contract"].includes(company.employment))
+    .flatMap((company) => company.roles.map((role) => role.start))
+    .sort()[0];
+  return Math.floor(monthsBetween(firstStart) / 12);
+}

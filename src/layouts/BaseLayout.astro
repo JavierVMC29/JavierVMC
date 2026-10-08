@@ -1,15 +1,17 @@
 ---
 import "@/styles/global.css";
+import SocialMeta from "@/components/SocialMeta.astro";
 import Footer from "@/components/sections/Footer.astro";
 import Header from "@/components/sections/header/Header.astro";
 import MobileMenu from "@/components/sections/header/MobileMenu.astro";
 import { DEFAULT_LOCALE, LOCALES, localizePath, type Locale } from "@/i18n";
-import { formatMetadataDescription, formatTitle } from "@/lib/metadata";
+import { formatMetadataDescription, formatTitle, ogImagePath } from "@/lib/metadata";
+import type { Paths } from "@/lib/paths";
 
 interface Props {
   locale: Locale;
   /** Route path without the locale prefix, e.g. "/" or "/about". */
-  path: string;
+  path: Paths;
   /** Page title; omitted on the home page, which only shows the site name. */
   title?: string;
   description: string;
@@ -22,7 +24,6 @@ const pageTitle = formatTitle(title);
 const socialTitle = title ?? pageTitle;
 const metaDescription = formatMetadataDescription(description);
 const canonicalUrl = new URL(localizePath(locale, path), site).href;
-const ogImage = new URL("/assets/metadata/opengraph.jpg", site).href;
 const GTM_ID = "GTM-K7N23CMV";
 ---
 
@@ -39,19 +40,7 @@ const GTM_ID = "GTM-K7N23CMV";
     <link rel="icon" href="/assets/metadata/favicon.ico" sizes="any" />
     <link rel="preload" href="/fonts/brand/SupremeLLTT-Book.woff2" as="font" type="font/woff2" crossorigin />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:title" content={socialTitle} />
-    <meta property="og:description" content={metaDescription} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1298" />
-    <meta property="og:image:height" content="649" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content={site.hostname} />
-    <meta property="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:title" content={socialTitle} />
-    <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content={ogImage} />
+    <SocialMeta url={canonicalUrl} title={socialTitle} description={metaDescription} image={ogImagePath(locale, path)} />
 
     <!-- Apply the saved/system theme before first paint to avoid a flash (see src/lib/theme.ts). -->
     <script is:inline>
