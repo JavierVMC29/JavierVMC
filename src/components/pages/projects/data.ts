@@ -50,14 +50,12 @@ export const PROJECTS: ProjectItem[] = [
     image: DeveloperTools,
     kind: "personal",
     href: "https://developer-tools.javiervmc.com",
-    comingSoon: true,
     skills: ["Astro", "TypeScript", "Tailwind", "Zod"],
   },
   {
     key: "Zentinel",
     image: Zentinel,
     kind: "work",
-    href: "https://zentinel.ec",
     skills: ["TypeScript", "React", "NestJS", "Node.js", "Express", "TypeORM", "PostgreSQL", "Keycloak", "Docker", "Astro", "Tailwind"],
   },
   {
